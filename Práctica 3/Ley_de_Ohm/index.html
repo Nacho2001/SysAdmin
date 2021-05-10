@@ -1,0 +1,99 @@
+ <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Actividad Práctica 7</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <div class="nav-wrapper teal darken -3">
+              <a class="brand-logo center"><i class="material-icons left">exposure</i><i class="material-icons right">exposure</i>Calculos con Ley de Ohm</a>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel teal lighten-5">
+                    <label class="black-text flow-text">Calculo de Tensión:</label>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="a1" placeholder="Ingrese el valor de Intensidad" type="number" class="black-text validate">
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="a2" placeholder="Ingrese el valor de Resistencia" type="number" class="validate">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s1">
+                            <a id="btn1" class="btn-small waves-effect">CALCULAR</a>
+                        </div>
+                        <div class="input-field col s1">
+                            <a id="btn1a" class="btn-small waves-effect">LIMPIAR</a>
+                        </div>
+                        <div class="input-field col s10">
+                            <input id="a3" disabled placeholder="Resultado final" type="number" class="validate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel teal lighten-5">
+                    <label class="black-text flow-text">Calculo de Intensidad:</label>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="b1" placeholder="Ingrese el valor de Tensión" type="number" class="validate">
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="b2" placeholder="Ingrese el valor de Resistencia" type="number" class="validate">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s1">
+                            <a id="btn2" class="btn-small waves-effect">CALCULAR</a>
+                        </div>
+                        <div class="input-field col s1">
+                            <a id="btn2a" class="btn-small waves-effect">LIMPIAR</a>
+                        </div>
+                        <div class="input-field col s10">
+                            <input id="b3" disabled placeholder="Resultado final" type="number" class="validate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel teal lighten-5">
+                    <label class="black-text flow-text">Calculo de Resistencia:</label>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="c1" placeholder="Ingrese el valor de Intensidad" type="number" class="black-text validate">
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="c2" placeholder="Ingrese el valor de Tensión" type="number" class="validate">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s1">
+                            <a id="btn3" class="btn-small waves-effect">CALCULAR</a>
+                        </div>
+                        <div class="input-field col s1">
+                            <a id="btn3a" class="btn-small waves-effect">LIMPIAR</a>
+                        </div>
+                        <div class="input-field col s10">
+                            <input id="c3" disabled placeholder="Resultado final" type="number" class="validate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="index.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </body>
+</html>
