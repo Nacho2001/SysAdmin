@@ -1,0 +1,7 @@
+Delfor, en el index.js hay un problema con el botón "limpiar", usé la función de refresh pero
+no tiene efecto. Me faltó agregarle algo aparte del id del botón?
+
+Además, en los cálculos de intensidad y resistencia, creo que hay un problema con los calculos,
+no me muestra los resultados. Me quedaron bien las funciones? 
+
+Si encontras los errores avisame por el chat del campus por favor. Gracias
