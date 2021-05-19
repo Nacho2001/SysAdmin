@@ -1,6 +1,6 @@
 const obtener_fotos = async () => {
 
-    const respuesta = await fetch("https://jsonplaceholder.typicode.com/photos$albumid=1")
+    const respuesta = await fetch("https://jsonplaceholder.typicode.com/photos?albumId=1")
 
     const datos = await respuesta.json();
 
@@ -16,12 +16,10 @@ const obtener_fotos = async () => {
                     </div>
                 </div>
           </div>
-
-            </div>
         `
         total_columnas.push(columna)
-    });
-    document.querySelector("r_fotos").innerHTML = total_columnas.join("")
+    })
+    document.querySelector("#r_fotos").innerHTML = total_columnas.join("")
 }
 
 const boton = document.querySelector("#accion")
