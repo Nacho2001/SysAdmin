@@ -1,6 +1,6 @@
 const articulos = {
 
-    datos(){
+    data(){
         return {
             titulo:'',
             url:'',
@@ -9,23 +9,26 @@ const articulos = {
 
     },
 
-    methods: {
+    methods:{
         guardar_articulo(){
             let articulo = {
                 titulo:this.titulo,
                 url:this.url
             }
 
-            this.lista_articulos.push(this.guardar_articulo)
+            this.lista_articulos.push(this.articulo)
 
-            this.titulo='', this.url=''
+            this.titulo= ''; this.url= ''
+        },
+        mounted(){
+            this.articulo();
         }
-        
-    },
-    mounted(){
         
     }
 
 
+
 }
+
+
 Vue.createApp(articulos).mount("#art")

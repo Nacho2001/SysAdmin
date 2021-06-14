@@ -19,7 +19,7 @@
             </div>
 
             <div style="max-width: 30rem;">
-                <input type="text" class="form-control" placeholder="Ingrese título">
+                <input v-model='titulo' type="text" class="form-control" placeholder="Ingrese título">
             </div>
 
             <div style="margin-top: 20px;">
@@ -27,16 +27,16 @@
             </div>
 
             <div style="max-width: 30rem;">
-                <input type="text" class="form-control" placeholder="Ingrese url">
+                <input v-model='url' type="text" class="form-control" placeholder="Ingrese url">
             </div>
 
-            <button type="button" class="btn btn-success" style="margin-top: 20px;">Guardar imagen</button>
+            <button v-on:click='guardar_articulo' type="button" class="btn btn-success" style="margin-top: 20px;">Guardar imagen</button>
 
-            <div class="row" id="art" style="margin-top: 20px;" v-for='(element,index) of lista_articulos'>
-                <div class="card" style="width: 18rem;">
+            <div id="art" class="row" style="margin-top: 20px;">
+                <div class="card" style="width: 18rem;" v-for='element of lista_articulos'>
                     <img :src="{{element.url}}" class="card-img-top">
                     <div class="card-body">
-                      <h5 class="card-title">{{element.titulo}}</h5>
+                      <h5 class="card-title">"{{element.titulo}}"</h5>
                       <a href="#" class="btn btn-primary">Ver imagen</a>
                     </div>
                   </div>
