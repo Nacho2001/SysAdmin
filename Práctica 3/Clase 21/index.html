@@ -32,9 +32,16 @@
 
             <button type="button" class="btn btn-success" style="margin-top: 20px;">Guardar imagen</button>
 
-            <div class="row" id="aritculos">
-                
+            <div class="row" id="art" style="margin-top: 20px;" v-for='(element,index) of lista_articulos'>
+                <div class="card" style="width: 18rem;">
+                    <img :src="{{element.url}}" class="card-img-top">
+                    <div class="card-body">
+                      <h5 class="card-title">{{element.titulo}}</h5>
+                      <a href="#" class="btn btn-primary">Ver imagen</a>
+                    </div>
+                  </div>
             </div>
         </div>
+        <script src="index.js"></script>
     </body>
 </html>
