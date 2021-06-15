@@ -9,14 +9,14 @@ const articulos = {
 
     },
 
-    methods:{
+    methods: {
         guardar_articulo(){
             let articulo = {
                 titulo:this.titulo,
                 url:this.url
             }
 
-            this.lista_articulos.push(this.articulo)
+            this.lista_articulos.push(articulo)
 
             this.titulo= ''; this.url= ''
         },
@@ -26,9 +26,6 @@ const articulos = {
         
     }
 
-
-
 }
-
 
 Vue.createApp(articulos).mount("#art")
