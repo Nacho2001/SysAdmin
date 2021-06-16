@@ -37,7 +37,7 @@ const mispropiedades = {
 
     },
 
-    mounted: {
+    mounted() {
 
 
     }

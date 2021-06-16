@@ -6,11 +6,15 @@ const Tensión = () => {
     const tr = t1 * t2;
     document.querySelector("#a3").value = tr;
 }
+const limpiar = () => {
+    document.querySelector("#a3").value=""
+
+}
 
 const calc_tension = document.querySelector("#btn1");
 calc_tension.addEventListener("click", Tensión);
-document.querySelector("#btn1a").reset()
 
+document.querySelector("#btn1a").addEventListener("click",limpiar)
 
 //Calculo de Intensidad
 
@@ -23,7 +27,9 @@ const Intensidad = () => {
 
 const calc_intensidad = document.querySelector("#btn2");
 calc_intensidad.addEventListener("click", Intensidad);
-document.querySelector("#btn2a").reset()
+document.querySelector("#btn2a").addEventListener("click", () => {
+    document.querySelector("#b3").value=""
+} )
 
 
 //Calculo de Resistencia
@@ -37,4 +43,6 @@ const Resistencia = () => {
 
 const calc_resistencia = document.querySelector("#btn3");
 calc_resistencia.addEventListener("click", Resistencia);
-document.querySelector("#btn3a").reset()
+document.querySelector("#btn3a").addEventListener("click", () => {
+    document.querySelector("#c3").value=""
+} )
