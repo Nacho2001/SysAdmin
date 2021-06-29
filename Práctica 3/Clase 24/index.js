@@ -18,20 +18,20 @@ const mispagos = {
             const nuevoPago = {
                 nombre:this.nombre,
                 apellido:this.apellido,
-                dni:this.apellido,
+                dni:this.dni,
                 correo:this.correo,
                 cuota:this.cuota,
-                importe:this,importe,
+                importe:this.importe,
                 fecha:this.fecha
             }
 
             if("pagos" in localStorage){
-                this.tabla_pagos = JSON.parse(localStorage.getItem("pagos"));
-                this.tabla_pagos.push(nuevoPago);
-                localStorage.setItem("pagos",JSON.stringify(this.tabla_pagos)); 
+                this.tabla_pagos = JSON.parse(localStorage.getItem("pagos")); //chequeo de lista
+                this.tabla_pagos.push(nuevoPago); // carga el dato desde nuevoPago
+                localStorage.setItem("pagos",JSON.stringify(this.tabla_pagos)); // carga el elemento al arreglo
             }else{
-                this.lista_tareas.push(nuevoPago);
-                localStorage.setItem("pagos",JSON.stringify(this.tabla_pagos)) 
+                this.tabla_pagos.push(nuevoPago); // carga el elemento desde nuevopago
+                localStorage.setItem("pagos",JSON.stringify(this.tabla_pagos)) // crea el elemento en el arreglo
             }
 
 
@@ -39,7 +39,7 @@ const mispagos = {
 
         listarPagos(){
             if("pagos" in localStorage){
-                this.tabla_pagos = JSON.parse(localStorage.getItem("pagos"));
+                this.tabla_pagos = JSON.parse(localStorage.getItem("pagos")); //obtener elementos y listarlos
             }
             else{
                 this.tabla_pagos = [];
