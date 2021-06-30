@@ -65,10 +65,13 @@
                             <div class="row">
                                 <div class="mb-3">
                                     <label class="form-label">Fecha de pago</label>
-                                    <input v-model="fecha" type="datetime" class="form-control" placeholder="Ingrese fecha">
+                                    <input v-model="fecha" type="date" class="form-control" placeholder="Ingrese fecha">
                                 </div>
                             </div>
                             <button @click="guardar_pago" class="btn btn-success">Guardar pago</button>
+                            <div class="mt-3">
+                                <button @click="eliminar_todo" class="btn btn-dark">Borrar todo</button>
+                            </div>
                         </div>
                   </div>
                 </div>
@@ -97,6 +100,7 @@
                                         <td>{{pago.cuota}}</td>
                                         <td>{{pago.importe}}</td>
                                         <td>{{pago.fecha}}</td>
+                                        <td><button @click="borrar_pago" class="btn btn-danger btn-sm">x</button></td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -44,7 +44,17 @@ const mispagos = {
             else{
                 this.tabla_pagos = [];
             }
-        }
+        },
+
+        eliminar_todo(){ // borra todo
+            localStorage.removeItem("pagos");
+            this.listarPagos();
+        },
+
+        borrar_pago(index){
+            this.tabla_pagos.splice(index,1) //eliminar 1 elemento
+            localStorage.setItem("pagos",JSON.stringify(this.tabla_pagos))
+        },
     },
     mounted(){
         this.listarPagos();
