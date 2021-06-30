@@ -4,7 +4,8 @@ const mispropiedades = {
         return {
             descripcion:'',
             tiempo:'',
-            lista_tareas:[]
+            lista_tareas:[],
+            indice:null
         }
 
     },
@@ -46,6 +47,21 @@ const mispropiedades = {
             localStorage.removeItem("tareas");
             this.listarTareas();
 
+        },
+
+        llenar_formulario(index){  //llena el formulario con datos de una tarea
+            this.descripcion = this.lista_tareas[index].descripcion;
+            this.tiempo = this.lista_tareas[index].tiempo;
+            this.indice = index;  //actualiza indice del boton actualizar
+
+        },
+
+        actualizar(){
+            this.lista_tareas[this.indice].descripcion = this.descripcion; //actualizar tareas
+            this.lista_tareas[this.indice].tiempo = this.tiempo; //atualizar tareas
+            localStorage.setItem("tareas",this.lista_tareas); // actualizar localstorage
+            this.descripcion = ''; this.tiempo = '';
+            this.indice = null; // vacia el indice luego de la actualización (no se puede actualizar 2 veces)
         }
     },
     mounted(){

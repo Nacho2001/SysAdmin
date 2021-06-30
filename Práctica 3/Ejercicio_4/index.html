@@ -31,7 +31,8 @@
                         <label class="from-label">Tiempo</label>
                         <input v-model="tiempo" type="text" class="form-control" placeholder="Ingrese tiempo estimado">
                     </div>
-                    <button @click="guardar_tarea" class="btn btn-primary">Guardar</button>
+                    <button v-if="indice == null" @click="guardar_tarea" class="float-start btn btn-primary">Guardar</button>
+                    <button v-if="indice != null" @click="actualizar" class="float-end btn btn-success">Actualizar</button>
                 </div>
 
 
@@ -41,7 +42,8 @@
                           <div class="fw-bold">{{tarea.descripcion}}</div>
                         </div>
                         <span class="badge bg-primary rounded-pill" syle="margin-right: 10px">{{tarea.tiempo}}</span>
-                        <button @click="eliminarTarea(index)" class="btn btn-small btn-danger">x</button>
+                        <button @click="eliminarTarea(index)" class="btn btn-sm btn-danger">x</button>
+                        <button @click="llenar_formulario(index)" class="btn btn-sm btn-info" style="margin-left: 5px;">Editar</button>
                     </li>
 
                 </div>

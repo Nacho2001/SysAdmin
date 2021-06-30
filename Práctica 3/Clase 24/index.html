@@ -16,7 +16,7 @@
         </nav>
         <div id="pagos" class="container-xxl mt-3">
             <div class="row">
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <div class="card">
                         <div class="card-header">Carga de datos</div>
                         <div class="card-body">
@@ -67,15 +67,15 @@
                                     <label class="form-label">Fecha de pago</label>
                                     <input v-model="fecha" type="date" class="form-control" placeholder="Ingrese fecha">
                                 </div>
-                            </div>
-                            <button @click="guardar_pago" class="btn btn-success">Guardar pago</button>
+                            </div>                  
                             <div class="mt-3">
-                                <button @click="eliminar_todo" class="btn btn-dark">Borrar todo</button>
+                                <button @click="guardar_pago" class="float-start btn btn-success">Guardar pago</button>
+                                <button @click="eliminar_todo" class="float-end btn btn-dark">Borrar todo</button>
                             </div>
                         </div>
                   </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">Grilla pagos</div>
                         <div class="card-body">
@@ -89,6 +89,7 @@
                                         <th scope="col">Cuota</th>
                                         <th scope="col">Importe</th>
                                         <th scope="col">Fecha</th>
+                                        <th scope="col">Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
