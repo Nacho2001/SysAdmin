@@ -19,6 +19,9 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/publicaciones">Publicaciones</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/leydeohm">Ley de Ohm</router-link>
+          </li>
         </ul>
       </div>
     </div>

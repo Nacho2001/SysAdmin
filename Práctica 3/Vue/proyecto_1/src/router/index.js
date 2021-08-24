@@ -24,6 +24,12 @@ const routes = [
     path: '/publicaciones',
     name: 'Publicaciones',
     component: () => import( '../views/Publicacion.vue')
+  },
+  {
+    path: '/leydeohm',
+    name: 'LeyOhm',
+    component: () => import('../views/LeyOhm.vue')
+
   }
 ]
 
