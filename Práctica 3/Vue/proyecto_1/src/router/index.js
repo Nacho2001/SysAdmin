@@ -30,6 +30,11 @@ const routes = [
     name: 'LeyOhm',
     component: () => import('../views/LeyOhm.vue')
 
+  },
+  {
+    path: '/pitagoras',
+    name: 'Pitagoras',
+    component: () => import('../views/Pitagoras.vue')
   }
 ]
 
