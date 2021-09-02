@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-dark bg">
+    <nav class="navbar navbar-dark">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 fw-bold fs-1">Teorema de Pitágoras</span>
         </div>
