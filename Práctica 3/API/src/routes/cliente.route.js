@@ -46,4 +46,22 @@ enrutador.post('/cliente', () => {
 
 })
 
+//Implementacion y creacion ruta cliente
+enrutador.put('/cliente/:codigo',async (req,res) => {
+
+    //primer paso:capturar el código
+    const id = req.params.codigo
+    //segundo paso: capturar el body, los datos del cliente modificado
+    const clienteModificado = req.body;
+
+    await db.query('update cliente set ? where id_cliente = ?',[clienteModificado,id],(err,result) => {
+        if(err){
+            return console.log('Algo ocurrió!')
+        }else{
+            console.log('Operación exitosa!!')
+            res.json('Operación exitosa!!')
+        };
+    })
+})
+
 module.exports = enrutador
