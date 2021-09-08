@@ -47,7 +47,7 @@ enrutador.post('/cliente', () => {
 })
 
 //Implementacion y creacion ruta cliente
-enrutador.put('/cliente/:codigo',async (req,res) => {
+enrutador.put('/cliente/:codigo', async (req,res) => {
 
     //primer paso:capturar el código
     const id = req.params.codigo
@@ -62,6 +62,20 @@ enrutador.put('/cliente/:codigo',async (req,res) => {
             res.json('Operación exitosa!!')
         };
     })
+})
+
+enrutador.get('/cliente/:codigo', async (req,res) => {
+
+    const id = req.params.codigo;
+    await db.query('select * from cliente where id_cliente = ?',[id], (err, rows) => {
+        if(err){
+            return console.log('Algo ocurrio')
+        }else{
+            res.json(rows[0])
+        }
+
+    })
+
 })
 
 module.exports = enrutador
