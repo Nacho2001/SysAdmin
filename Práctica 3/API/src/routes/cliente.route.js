@@ -33,11 +33,11 @@ enrutador.delete('/cliente/:codigo', async (req,res) => {
 
 })
 //Operación para agregar clientes
-enrutador.post('/cliente', () => {
+enrutador.post('/cliente', (req,res) => {
     const unCliente = req.body;
-    db.query('inset into cliente set ?',[unCliente], (err,result) => {
+    db.query('insert into cliente set ?',[unCliente], (err,result) => {
 
-        if (err){
+        if(err){
             return console.log('Ocurrió un error')
         }else{
             res.json('El cliente se insertó exitosamente')
