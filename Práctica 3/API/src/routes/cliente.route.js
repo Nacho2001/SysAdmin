@@ -64,6 +64,7 @@ enrutador.put('/cliente/:codigo', async (req,res) => {
     })
 })
 
+//busco clientes por id
 enrutador.get('/cliente/:codigo', async (req,res) => {
 
     const id = req.params.codigo;
