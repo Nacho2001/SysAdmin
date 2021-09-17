@@ -52,4 +52,19 @@ enrutador.put('/producto/:codigo', async (req,res) => {
             res.json('La operación fue exitosa')
         };
     })
+});
+
+//busqueda de producto por id
+
+enrutador.get('/producto/:codigo', async (req,res) => {
+    const id = req.params.codigo;
+    await db.query('select * from producto where id = ?',[id], (err,rows) => {
+        if(err){
+            return console.log('Pasó algo en la busqueda...')
+        }else{
+            res.json(rows[0])
+        }
+    })
 })
+
+module.exports = enrutador
