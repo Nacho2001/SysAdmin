@@ -18,7 +18,7 @@ enrutador.get('/productos',(req,res) => {
 //Operación agregar producto
 enrutador.post('/producto', (req,res) => {
     const elemento = req.body;
-    db.query('insert into producto where set ?', [elemento], (err,result) => {
+    db.query('insert into producto set ?', [elemento], (err,result) => {
         if(err){
             return console.log('Paso algo al agregar el producto...')
         }else{
@@ -58,7 +58,7 @@ enrutador.put('/producto/:codigo', async (req,res) => {
 
 enrutador.get('/producto/:codigo', async (req,res) => {
     const id = req.params.codigo;
-    await db.query('select * from producto where id = ?',[id], (err,rows) => {
+    await db.query('select * from producto where id_producto = ?',[id], (err,rows) => {
         if(err){
             return console.log('Pasó algo en la busqueda...')
         }else{
@@ -67,4 +67,5 @@ enrutador.get('/producto/:codigo', async (req,res) => {
     })
 })
 
+//exporto el enrutador
 module.exports = enrutador
