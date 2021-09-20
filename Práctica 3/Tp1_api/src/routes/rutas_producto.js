@@ -5,8 +5,8 @@ const enrutador = express.Router()
 const db = require('../database')
 
 //Muestro todos los datos de un producto
-enrutador.get('/productos',(req,res) => {
-    db.query('select * from producto', (err,rows) => {
+enrutador.get('/productos', async (req,res) => {
+    await db.query('select * from producto', (err,rows) => {
         if(err){
             console.log('Hubo un error al realizar la consulta')
         }else{
@@ -16,9 +16,9 @@ enrutador.get('/productos',(req,res) => {
 });
 
 //Operación agregar producto
-enrutador.post('/producto', (req,res) => {
+enrutador.post('/producto', async (req,res) => {
     const elemento = req.body;
-    db.query('insert into producto set ?', [elemento], (err,result) => {
+    await db.query('insert into producto set ?', [elemento], (err,result) => {
         if(err){
             return console.log('Paso algo al agregar el producto...')
         }else{
