@@ -24,7 +24,10 @@
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/pitagoras">Pitágoras</router-link>
-          </li>       
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/cliente">Cliente</router-link>
+          </li>         
         </ul>
       </div>
     </div>

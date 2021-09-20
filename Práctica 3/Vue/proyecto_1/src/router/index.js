@@ -35,6 +35,11 @@ const routes = [
     path: '/pitagoras',
     name: 'Pitagoras',
     component: () => import('../views/Pitagoras.vue')
+  },
+  {
+    path:"/cliente",
+    name:"Cliente",
+    component: () => import('../views/Cliente.vue')
   }
 ]
 
