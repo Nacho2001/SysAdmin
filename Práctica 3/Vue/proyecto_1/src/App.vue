@@ -33,7 +33,7 @@
       </div>
     </div>
   </nav>
-  <div>
+  <div class="container mt-3">
     <router-view/>
   </div>
 </template>

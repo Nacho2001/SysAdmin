@@ -11,7 +11,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">DNI</label>
-                <input v-model="dni" type="number" placeholder="Ingrese DNI">
+                <input v-model="dni" class="form-control" type="number" placeholder="Ingrese DNI">
             </div>
 
 
