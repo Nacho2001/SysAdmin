@@ -1,11 +1,11 @@
 <template>
-    <ClienteForm/>
+    <ClienteForm></ClienteForm>
 </template>
 
 <script>
 import ClienteForm from "@/components/ClienteForm.vue"
 export default {
-    name:"Cliente",
+    name:'Cliente',
     component:{
         ClienteForm
     }

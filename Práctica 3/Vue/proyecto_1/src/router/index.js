@@ -37,8 +37,8 @@ const routes = [
     component: () => import('../views/Pitagoras.vue')
   },
   {
-    path:"/cliente",
-    name:"Cliente",
+    path: '/cliente',
+    name: 'Cliente',
     component: () => import('../views/Cliente.vue')
   }
 ]
