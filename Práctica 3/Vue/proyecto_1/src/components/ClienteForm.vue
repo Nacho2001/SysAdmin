@@ -110,7 +110,7 @@ export default {
                 apellido:this.apellido,
                 dni:this.dni
             }
-            this.axios.put("http://localhost:3000/cliente/"+ this.id).then(result => {
+            this.axios.put("http://localhost:3000/cliente/"+ this.id,clienteModificado).then(result => {
                 alert(result.data)
                 this.listarClientes()
                 this.vaciar()

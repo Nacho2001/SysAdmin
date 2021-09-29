@@ -1,4 +1,5 @@
 <template>
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">VUE 3</a>
@@ -32,7 +33,7 @@
       </div>
     </div>
   </nav>
-  <div class="container mt-3">
+  <div>
     <router-view/>
   </div>
 </template>

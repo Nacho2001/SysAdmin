@@ -3,10 +3,10 @@
 </template>
 
 <script>
-import ClienteForm from "@/components/ClienteForm.vue"
+import ClienteForm from '@/components/ClienteForm.vue';
 export default {
     name:'Cliente',
-    component:{
+    components:{
         ClienteForm
     }
 }
