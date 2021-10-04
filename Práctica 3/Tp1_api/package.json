@@ -1,21 +1,21 @@
 {
   "name": "tp1_api",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
-  "scripts": { 
+  "scripts": {
     "dev2": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mysql": "^2.18.1"
   },
   "devDependencies": {
+    "cors": "^2.8.5",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.12"
-  }
+    "nodemon": "^2.0.13"
+  },
+  "description": ""
 }

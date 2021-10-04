@@ -3,7 +3,7 @@
         <div class="col-4">
             <div class="mb-3">
                 <label class="form-label">Descripción del producto</label>
-                <input v-model="nombre_p" class="form-control" type="text" placeholder="Ingrese la descripción del producto">
+                <input v-model="descripcion" class="form-control" type="text" placeholder="Ingrese la descripción del producto">
             </div>
             <div>
                 <label class="form-label">Precio de compra</label>
@@ -19,10 +19,10 @@
             </div>
 
             <div v-if="estado == 1">
-                <button @click="guardar_producto()" class="btn btn-success">Guardar producto</button>
+                <button @click="guardar_producto()" class="btn btn-success mt-3">Guardar producto</button>
             </div>
             <div v-if="estado == 2">
-                <button @click="actualizar_producto()" class="btn btn-success">Actualizar producto</button>
+                <button @click="actualizar_producto()" class="btn btn-success mt-3">Actualizar producto</button>
             </div>
         </div>
         <div class="col-8">
@@ -43,8 +43,8 @@
                         <td>{{producto.precio_venta}}</td>
                         <td>{{producto.stock}}</td>
                         <td>
-                            <button @click="borrar_producto()" class="btn btn-danger btn-sm">x</button>
-                            <button @click="modificar_producto()" class="btn btn-warning btn-sm mr-1">Editar</button>
+                            <button @click="borrar_producto(producto.id_producto)" class="btn btn-danger btn-sm me-1">x</button>
+                            <button @click="modificar_producto(producto)" class="btn btn-warning btn-sm mr-1">Editar</button>
                         </td>
                     </tr>
                 </tbody>
@@ -96,7 +96,7 @@ export default {
         },
 
         borrar_producto(id){
-            this.axios.delete("http://localhost:2500/producto" + id).then(result => {
+            this.axios.delete("http://localhost:2500/producto/" + id).then(result => {
                 alert(result.data)
                 this.ver_productos()
             })
@@ -107,6 +107,7 @@ export default {
             this.precio_compra = articulo.precio_compra;
             this.precio_venta = articulo.precio_venta;
             this.stock = articulo.stock;
+            this.id = articulo.id_producto;
         },
 
         actualizar_producto(){
