@@ -5,15 +5,15 @@
                 <label class="form-label">Descripción del producto</label>
                 <input v-model="descripcion" class="form-control" type="text" placeholder="Ingrese la descripción del producto">
             </div>
-            <div>
+            <div class="mb-3">
                 <label class="form-label">Precio de compra</label>
                 <input v-model="precio_compra" class="form-control" type="text" placeholder="Ingrese el monto de compra">
             </div>
-            <div>
+            <div class="mb-3">
                 <label class="form-label">Precio de venta</label>
                 <input v-model="precio_venta" class="form-control" type="text" placeholder="Ingrese el monto de venta">
             </div>
-            <div>
+            <div class="mb-3">
                 <label class="form-label">Stock</label>
                 <input v-model="stock" class="form-control" type="text" placeholder="Ingrese las unidades disponibles">
             </div>
