@@ -17,7 +17,7 @@ const io = socketio(servidor)
 //establecemos la apertura del canal, para despues emitir datos
 io.on('connection', (socket) => {
     setInterval(() => {
-        socket.emit('dato-socket',Math.random())
+        socket.emit('dato-socket',{dato:Math.random(),nombre:'Nacho'})
     }, 1000)
 
     socket.on('respuesta', (valor) => {
