@@ -26,6 +26,19 @@
                         </div>                
                 </div>
             </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        {{this.descripcion_cpu_free}}
+                    </div>
+                    <div class="card-body text-center">
+                        <h1>{{this.valor_cpu_free}}</h1>
+                    </div>
+                    <div class="card-footer">
+                        <h4>Valor (%)</h4>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -38,7 +51,9 @@ export default {
             valor_recibido:null,
             estado:'',
             equipo:'',
-            nombre:''
+            nombre:'',
+            valor_cpu_free:null,
+            descripcion_cpu_free:''
         }
     },
     methods:{
@@ -46,16 +61,22 @@ export default {
             //tenemos que conectarnos y/o vincular nuestro cliente con el servidor
             const socket  = io(this.equipo)
 
-            socket.on('dato-socket', (valor) => {
-                this.valor_recibido = valor.dato.toFixed(2);
-                this.nombre = valor.nombre;
+            socket.on('dato-socket', (objeto) => {
+                this.valor_recibido = objeto.dato.toFixed(2);
+                this.nombre = objeto.nombre;
                 if(this.valor_recibido > 0.7){
                     this.estado = "Elevado"
                 }else{
                     this.estado = "Normal"
                 }
+            }),
+            socket.on('datos-cpu', (objeto) => {
+                this.valor_cpu_free = objeto.data.toFixed(2);
+                this.descripcion_cpu_free = objeto.descripcion;
             })
         }
+
+
     },
     mounted(){
         this.capturar_random()
