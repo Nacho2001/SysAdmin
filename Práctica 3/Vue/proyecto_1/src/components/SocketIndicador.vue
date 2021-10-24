@@ -70,6 +70,7 @@ export default {
                     this.estado = "Normal"
                 }
             }),
+            //datos cpu
             socket.on('datos-cpu', (objeto) => {
                 this.valor_cpu_free = objeto.data.toFixed(2);
                 this.descripcion_cpu_free = objeto.descripcion;
