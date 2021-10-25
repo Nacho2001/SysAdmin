@@ -85,9 +85,6 @@ export default {
             descripcion_cpu_free:'',
             valor_cpu_usage:null,
             descripcion_cpu_usage:'',
-            temp:null,
-            cores:'',
-            max:''
         }
     },
     methods:{
