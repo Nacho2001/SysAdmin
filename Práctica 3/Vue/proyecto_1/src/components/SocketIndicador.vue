@@ -9,7 +9,7 @@
                     <option value="http://172.16.8.184:3000">Equipo de Dario</option>
                     <option value="http://172.16.8.254:3000">Equipo de Romina</option>
                     <option value="http://172.16.9.28:3000">Equipo de Andrea</option>
-                    <option value="http://172.16.9.231:3000">Equipo de Lautaro R</option>
+                    <option value="http://lautaro00.ddns.net:3000">Equipo de Lautaro R</option>
                     <option value="http://172.16.8.175:3000">Equipo de Belén</option>
                 </select>
             </div>

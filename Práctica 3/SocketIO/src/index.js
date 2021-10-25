@@ -3,7 +3,7 @@ const cors = require('cors')
 const socketio = require('socket.io')
 const server = express()
 const os = require('node-os-utils')
-const si = require('systeminformation')
+const cpu2 = require('cputemp')
 
 // acceder a los recursos
 
@@ -35,7 +35,7 @@ io.on('connection', (socket) => {
                 data: info
             })
         })
-    },1000)
+    },3000)
 
     setInterval(() => {
         cpu.usage()
@@ -46,10 +46,10 @@ io.on('connection', (socket) => {
                 data: info
             })
         })
-    },1000)
+    },5000)
 
 
-    si.cpuTemperature()
+    /*si.cpuTemperature()
     .then((data) => {
         socket.emit('temperatura',
         {
@@ -57,7 +57,7 @@ io.on('connection', (socket) => {
             cores:data.cores,
             max:data.max
         })
-    })
+    });*/
 
     socket.on('respuesta', (valor) => {
         console.log(valor)
