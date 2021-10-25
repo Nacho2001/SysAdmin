@@ -3,6 +3,7 @@ const cors = require('cors')
 const socketio = require('socket.io')
 const server = express()
 const os = require('node-os-utils')
+const si = require('systeminformation')
 
 // acceder a los recursos
 
@@ -35,6 +36,28 @@ io.on('connection', (socket) => {
             })
         })
     },1000)
+
+    setInterval(() => {
+        cpu.usage()
+        .then((info) => {
+            socket.emit('uso-cpu',
+            {
+                descripcion: 'CPU USAGE',
+                data: info
+            })
+        })
+    },1000)
+
+
+    si.cpuTemperature()
+    .then((data) => {
+        socket.emit('temperatura',
+        {
+            main:data.main,
+            cores:data.cores,
+            max:data.max
+        })
+    })
 
     socket.on('respuesta', (valor) => {
         console.log(valor)

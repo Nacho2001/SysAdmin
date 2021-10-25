@@ -5,8 +5,8 @@
             <div class="col-3">
                 <select @change="capturar_random()" v-model="equipo" class="form-select">
                     <option value="-1">Seleccione equipo...</option>
+                    <option value="http://localhost:3000">Mi equipo</option>
                     <option value="http://172.16.8.184:3000">Equipo de Dario</option>
-                    <option value="http://localhost:3000">Equipo de Nacho</option>
                     <option value="http://172.16.8.254:3000">Equipo de Romina</option>
                     <option value="http://172.16.9.28:3000">Equipo de Andrea</option>
                     <option value="http://172.16.9.231:3000">Equipo de Lautaro R</option>
@@ -39,6 +39,35 @@
                     </div>
                 </div>
             </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        {{this.descripcion_cpu_usage}}
+                    </div>
+                    <div class="card-body text-center">
+                        <h1>{{this.valor_cpu_usage}}</h1>
+                    </div>
+                    <div class="card-footer">
+                        <h4>Valor (%)</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table mt-3">
+                <thead>
+                    <th>Main</th>
+                    <th>Cores</th>
+                    <th>Max</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{this.temp}}</td>
+                        <td>{{this.cores}}</td>
+                        <td>{{this.max}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </template>
@@ -53,7 +82,12 @@ export default {
             equipo:'',
             nombre:'',
             valor_cpu_free:null,
-            descripcion_cpu_free:''
+            descripcion_cpu_free:'',
+            valor_cpu_usage:null,
+            descripcion_cpu_usage:'',
+            temp:null,
+            cores:'',
+            max:''
         }
     },
     methods:{
@@ -74,6 +108,17 @@ export default {
             socket.on('datos-cpu', (objeto) => {
                 this.valor_cpu_free = objeto.data.toFixed(2);
                 this.descripcion_cpu_free = objeto.descripcion;
+            }),
+            //uso del cpu
+            socket.on('uso-cpu', (objeto) => {
+                this.valor_cpu_usage = objeto.data.toFixed(3);
+                this.descripcion_cpu_usage = objeto.descripcion;
+            }),
+            //temperatura
+            socket.on('temperatura', (objeto) => {
+                this.temp = objeto.main,
+                this.cores = objeto.cores,
+                this.max = objeto.max
             })
         }
 
