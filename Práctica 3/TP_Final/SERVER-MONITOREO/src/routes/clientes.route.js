@@ -9,7 +9,7 @@ const db = require('../database')
 //Operaciones en la BD:
 
 //Listar todos los clientes
-enrutador.get("/cliente", (req,res) => {
+enrutador.get('/clientes', (req,res) => {
     db.query('select * from cliente', (err,rows) => { //Realiza la consulta a la DB
         if(err){
             console.log('Hubo un error al listar los clientes')  // Muestra por consola si hubo un error 
