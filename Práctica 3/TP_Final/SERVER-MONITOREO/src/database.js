@@ -3,7 +3,7 @@ const mysql = require('mysql')
 
 //Ingreso a la BD
 const db = mysql.createConnection({
-    host:'192.168.200.102',
+    host:'192.168.56.2',
     port:3306,
     //server:'db',
     user:'root',

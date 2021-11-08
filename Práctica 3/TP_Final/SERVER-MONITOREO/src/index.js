@@ -18,7 +18,7 @@ server.use(cors())
 server.use(morgan('dev4'))
 
 //Puerto que voy a utilizar: 5000
-server.set('port', process.env.PORT || 3000)
+server.set('port', process.env.PORT || 5000)
 
 //Busca "port" e inicia el servidor
 server.listen(server.get('port'))
