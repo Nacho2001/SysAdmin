@@ -40,7 +40,7 @@
                         <td>{{cliente.dni}}</td>
                         <td>
                             <button @click="eliminarCliente(cliente.id_cliente)" class="btn btn-danger btn-sm">x</button>
-                            <button @click="editarCliente(cliente)" class="btn btn-primary btm-sm mr-1">Editar</button>
+                            <button @click="editarCliente(cliente)" class="btn btn-primary btn-sm mr-1">Editar</button>
                         </td>
                     </tr>
                 </tbody>

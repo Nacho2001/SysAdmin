@@ -1,6 +1,6 @@
 <template>
-<div>
-    <div class="row">
+<div> 
+    <div class="row"> 
         <div class="col-4">
             <div class="mb-3">
                 <label class="form-label">Razón social</label>
@@ -26,7 +26,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Descripción del equipo</label>
-                <input v-model="descripcion_equipo" class="form-control" type="text" placeholder="Escriba breve descripción del equipo">
+                <input v-model="equipo_descripcion" class="form-control" type="text" placeholder="Escriba breve descripción del equipo">
             </div>
         </div>
         <div class="col-4">
@@ -40,42 +40,42 @@
             </div>
 
             <div v-if="state == 0">
-                <button @click="guardar()" class="btn btn-success">Guardar cliente</button>
+                <button @click="guardar()" class="btn btn-success mt-4">Guardar cliente</button>
             </div>
             <div v-if="state == 1">
-                <button @click="actualizar()" class="btn btn-primary">Actualizar cliente</button>
+                <button @click="actualizar()" class="btn btn-warning mt-4">Actualizar cliente</button>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <table class="table">
+            <table class="table mt-3">
                 <thead>
                     <tr>
-                        <th>Razón social</th>
-                        <th>Teléfono</th>
-                        <th>Correo electrónico</th>
-                        <th>Dirección</th>
-                        <th>Localidad</th>
-                        <th>Descripción</th>
-                        <th>Dirección IP</th>
-                        <th>Sistema Operativo</th>
-                        <th>Acción</th>
+                        <th class="text-center">Razón social</th>
+                        <th class="text-center">Teléfono</th>
+                        <th class="text-center">Correo electrónico</th>
+                        <th class="text-center">Dirección</th>
+                        <th class="text-center">Localidad</th>
+                        <th class="text-center">Descripción</th>
+                        <th class="text-center">Dirección IP</th>
+                        <th class="text-center">Sistema Operativo</th>
+                        <th class="text-center">Acción</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="cliente of listado" v-bind:key="cliente.id_cliente">
-                        <td>{{cliente.razon_social}}</td>
-                        <td>{{cliente.telefono_contacto}}</td>
-                        <td>{{cliente.correo_electronico}}</td>
-                        <td>{{cliente.direccion}}</td>
-                        <td>{{cliente.localidad}}</td>
-                        <td>{{cliente.descripcion_equipo}}</td>
-                        <td>{{cliente.direccion_ip}}</td>
-                        <td>{{cliente.sistema_operativo}}</td>
+                        <td class="text-center">{{cliente.razon_social}}</td>
+                        <td class="text-center">{{cliente.telefono_contacto}}</td>
+                        <td class="text-center">{{cliente.correo_electronico}}</td>
+                        <td class="text-center">{{cliente.direccion}}</td>
+                        <td class="text-center">{{cliente.localidad}}</td>
+                        <td class="text-center">{{cliente.equipo_descripcion}}</td>
+                        <td class="text-center">{{cliente.direccion_ip}}</td>
+                        <td class="text-center">{{cliente.sistema_operativo}}</td>
                         <td>
-                            <button @click="eliminar(cliente.id_cliente)" class="btn btn-danger btn-sm">x</button>
-                            <button @click="editar(cliente)" class="btn btn-primary btm-sm mr-1">Editar</button>
+                            <button @click="editar(cliente)" class="btn btn-outline-primary btn-sm">Editar</button>
+                            <button @click="eliminar(cliente.id_cliente)" class="btn btn-danger fw-bold btn-sm ms-2">x</button>
                         </td>
                     </tr>
                 </tbody>
@@ -94,7 +94,7 @@ export default {
             correo_electronico:'',
             direccion:'',
             localidad:'',
-            descripcion_equipo:'',
+            equipo_descripcion:'',
             direccion_ip:'',
             sistema_operativo:'',
             listado:[],
@@ -108,7 +108,7 @@ export default {
             this.correo_electronico = "",
             this.direccion = "",
             this.localidad = "",
-            this.descripcion_equipo = "",
+            this.equipo_descripcion = "",
             this.direccion_ip = "",
             this.sistema_operativo = ""
         },
@@ -120,7 +120,7 @@ export default {
                 correo_electronico:this.correo_electronico,
                 direccion:this.direccion,
                 localidad:this.localidad,
-                descripcion_equipo:this.descripcion_equipo,
+                equipo_descripcion:this.equipo_descripcion,
                 direccion_ip:this.direccion_ip,
                 sistema_operativo:this.sistema_operativo
             }
@@ -152,25 +152,26 @@ export default {
             this.correo_electronico = elemento.correo_electronico;
             this.direccion = elemento.direccion;
             this.localidad = elemento.localidad;
-            this.descripcion_equipo = elemento.descripcion_equipo;
-            this.direccion_ip = this.direccion_ip;
-            this.sistema_operativo = this.sistema_operativo;
+            this.equipo_descripcion = elemento.equipo_descripcion;
+            this.direccion_ip = elemento.direccion_ip;
+            this.sistema_operativo = elemento.sistema_operativo;
+            this.id = elemento.id_cliente;
         },
 
         actualizar(){
-            const cmodificado = {
+            const ClienteCambiado = {
                 razon_social:this.razon_social,
                 telefono_contacto:this.telefono_contacto,
                 correo_electronico:this.correo_electronico,
                 direccion:this.direccion,
                 localidad:this.localidad,
-                descripcion_equipo:this.descripcion_equipo,
+                equipo_descripcion:this.equipo_descripcion,
                 direccion_ip:this.direccion_ip,
                 sistema_operativo:this.sistema_operativo
             }
-            this.axios.put("http://localhost:5000/cliente/"+ this.id,cmodificado).then(result => {
+            this.axios.put("http://localhost:5000/cliente/"+ this.id,ClienteCambiado).then(result => {
                 alert(result.data)
-                this.lista()
+                this.listar()
                 this.limpiar()
                 this.state = 0;
             })
