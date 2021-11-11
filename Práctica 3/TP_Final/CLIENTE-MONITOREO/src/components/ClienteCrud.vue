@@ -12,7 +12,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Correo electrónico</label>
-                <input v-model="correo_electronico" class="form-control" type="text" placeholder="Ingrese su correo electrónico">
+                <input v-model="correo_electronico" class="form-control" type="email" placeholder="Ingrese su correo electrónico">
             </div>
         </div>
         <div class="col-4">
@@ -32,7 +32,7 @@
         <div class="col-4">
             <div class="mb-3">
                 <label class="form-label">Dirección IP</label>
-                <input v-model="direccion_ip" class="form-control" type="text" placeholder="Escriba dirección IP del equipo">
+                <input v-model="direccion_ip" class="form-control" type="text" placeholder="http://direccion_ip:puerto">
             </div>
             <div class="mb-3">
                 <label class="form-label">Sistema operativo</label>

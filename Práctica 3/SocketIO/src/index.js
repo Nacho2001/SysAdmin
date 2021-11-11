@@ -3,7 +3,7 @@ const cors = require('cors')
 const socketio = require('socket.io')
 const server = express()
 const os = require('node-os-utils')
-const cpu2 = require('cputemp')
+//const cpu2 = require('cputemp')
 
 // acceder a los recursos
 
