@@ -14,7 +14,7 @@ dependencias requeridas
 Datos adicionales de container: almacenamiento en archivos y en mb, corre en modo usuario, 
 utiliza las mismas interfaces de red que el so host, sin virtualizar ningun adaptador ni red.
 
-Las mv, también virtulizan un kernel de so invitado, el container no.
+Las mv, también virtualizan un kernel de so invitado, el container no.
 
 Microservicios: Son funciones de una misma aplicación/servicio que se ejecuta por separado de las demás,
 permitiendo repararla o reemplazarla si falla (util para encontrar y solucionar errores)
@@ -46,7 +46,7 @@ Ventajas de los containers:
 
 / Inicio y paradas rápidos
 / Comparten recursos del host (no emulan ni dividen componentes físicos)
-/ Son portables, se puden transportar de un so a otro sin problemas
+/ Son portables, se pueden transportar de un so a otro sin problemas
 / Pueden correr muchos al mismo tiempo
 / Venjas para el usuario al correr aplicaciones complejas sin realizar configuraciones
 
