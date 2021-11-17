@@ -8,7 +8,9 @@ const socketio = require('socket.io')
 const os = require('node-os-utils')
 const cpu = os.cpu
 const mem = os.mem
+const drive = os.drive
 const netstat = os.netstat
+const oss = os.os
 
 //Consigo las funciones de express en "server"
 const server = express()
@@ -34,8 +36,11 @@ server.use(enrutador)
 //muestra el mensaje de inicio del servidor por consola
 console.log(`Servidor puesto en marcha en el puerto ${server.get('port')}`)
 
+
 //El socket utilizará un puerto diferente al de la api: 5020
-const servidor2 = server.listen(server.get(5020), () => {
+server.set('port2', process.env.PORT || 5020)
+
+const servidor2 = server.listen(server.get('port2'), () => {
    console.log('Servicio socket iniciado con éxito en el puerto 5020')
 });
 
@@ -47,7 +52,6 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
         .then((info) => {
             socket.emit('cpu-usage',
             {
-                nombre: 'CPU USAGE',
                 data: info
             })
         })
@@ -58,29 +62,25 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
         .then((info) => {
             socket.emit('cpu-free',
             {
-                nombre: 'CPU FREE',
                 data: info
             })
         })
     },1000)
 
-    cpu.count()
-    .then((info) => {
-        socket.emit('cpu-count',
-        {
-            nombre: 'CPU COUNT',
-            data: info
-        })
+    const cpu_count = cpu.count()
+
+    socket.emit('cpu-count',
+    {
+        data: cpu_count
     })
 
-    cpu.model()
-    .then((info) => {
-        socket.emit('cpu-model',
-        {
-            nombre: 'CPU MODEL',
-            data: info
-        })
+    const cpu_model = cpu.model()
+   
+    socket.emit('cpu-model',
+    {
+        data: cpu_model
     })
+    
 
     //Datos de DRIVE
     setInterval(() => {
@@ -90,7 +90,7 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
             {
                 utilizado: info.usedGb,
                 libre: info.freeGb,
-                porcentaje: info.freePercentage,
+                l_porcentaje: info.freePercentage,
                 total: info.totalGb
             })
         })
@@ -109,7 +109,7 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
     },1000)
 
     setInterval(() => {
-        mem.usage()
+        mem.used()
         .then((info) => {
             socket.emit('mem-usage',
             {
@@ -124,9 +124,8 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
         .then((info) => {
             socket.emit('netstat-eth0',
             {
-                interface: info.interface.eth0,
-                input: info.inputMb.eth0,
-                output: info.outputMb.eth0
+                input: info.eth0.inputMb,
+                output: info.eth0.outputMb
             })
         })
     },1000)
@@ -136,40 +135,32 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
         .then((info) => {
             socket.emit('netstat-lo',
             {
-                interface: info.interface.lo,
-                input: info.inputMb.lo,
-                output: info.outputMb.lo
+                input: info.lo.inputMb,
+                output: info.lo.outputMb
             })
         })
     },1000)
 
     //Datos de OS
-    os.oos()
-    .then((info) => {
-        socket.emit('os-oos',
-        {
-            nombre: 'OS OOS',
-            data: info
-        })
+    const oos = oss.oos()
+   
+    socket.emit('os-oos',
+    {
+        data: oos,
+        name:'OS OOS'
     })
 
-    os.hostname()
-    .then((info) => {
-        socket.emit('os-hostname',
-        {
-            nombre: 'OS HOSTNAME',
-            data: info
-        })
+    const hostname = oss.hostname()
+    socket.emit('os-hostname',
+    {
+        data: hostname,
+        name:'OS HOSTNAME'
     })
 
-    setInterval(() => {
-        os.arch()
-        .then((info) => {
-            socket.emit('os-arch',
-            {
-                nombre: 'OS ARCH',
-                data: info
-            })
-        })
-    },1000)
+    const os_arch = oss.arch()
+    socket.emit('os-arch',
+    {
+        data: os_arch,
+        name: 'OS ARCH'
+    })
 })

@@ -17,6 +17,7 @@
         </div>
         <div class="col-4">
             <div class="mb-3">
+                <i class="bi bi-alarm-fill"></i>
                 <label class="form-label">Dirección</label>
                 <input v-model="direccion" class="form-control" type="text" placeholder="Ingrese dirección">
             </div>

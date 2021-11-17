@@ -1,12 +1,11 @@
 <template>
     <div>
-        <h4>Recibiendo datos de CPU desde Socket:</h4>
+        <h4>Recibiendo datos de CPU desde Socket del equipo:</h4>
         <div class="row mt-3">
             <div class="col-3">
                 <select @change="capturaCpu()" v-model="equipo" class="form-select">
                     <option value="-1">Seleccione equipo...</option>
                     <option value="http://localhost:5020">Mi equipo</option>
-                    <option value="{{cliente.direccion_ip}}">{{cliente.direccion_ip}}</option>
                 </select>
             </div>
         </div>
@@ -14,7 +13,7 @@
             <div class="col-5">
                 <div class="card border-success">
                     <div class="card-header text-center bg-success">
-                        <h4>{{this.nombre_cpu_usage}}</h4>
+                        <h4>Uso de CPU:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
                         <h5>{{this.valor_cpu_usage}}</h5>
@@ -27,10 +26,10 @@
             <div class="col-5">
                 <div class="card border-success">
                     <div class="card-header text-center bg-success">
-                        <h4>{{this.nombre_cpu_free}}</h4>
+                        <h4>CPU Libre:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
-                        <h5>{{this.nombre_cpu_free}}</h5>
+                        <h5>{{this.valor_cpu_free}}</h5>
                     </div>
                     <div class="card-footer text-center bg-dark">
                         <h4>Valor (%)</h4>
@@ -42,7 +41,7 @@
             <div class="col-5">
                 <div class="card border-success">
                     <div class="card-header text-center bg-success">
-                        <h4>{{this.nombre_cpu_count}}</h4>
+                        <h4>CPU Count:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
                         <h5>{{this.valor_cpu_count}}</h5>
@@ -55,7 +54,7 @@
             <div class="col-5">
                 <div class="card border-success">
                     <div class="card-header text-center bg-success">
-                        <h4>{{this.nombre_cpu_model}}</h4>
+                        <h4>Modelo CPU:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
                         <h5>{{this.valor_cpu_model}}</h5>
@@ -75,13 +74,9 @@ export default {
     data(){
         return {
             equipo:'',
-            nombre_cpu_usage:'',
             valor_cpu_usage:null,
-            nombre_cpu_free:'',
             valor_cpu_free:null,
-            nombre_cpu_count:'',
             valor_cpu_count:null,
-            nombre_cpu_model:'',
             valor_cpu_model:null,
         }
     },
@@ -91,22 +86,18 @@ export default {
 
             socket.on('cpu-usage', (objeto) => {
                 this.valor_cpu_usage = objeto.data.toFixed(2);
-                this.nombre_cpu_usage = objeto.nombre;
             }),
 
             socket.on('cpu-free', (objeto) => {
                 this.valor_cpu_free = objeto.data.toFixed(2);
-                this.nombre_cpu_free = objeto.nombre;
             }),
 
             socket.on('cpu-count', (objeto) => {
-                this.valor_cpu_count = objeto.data.toFixed(2);
-                this.nombre_cpu_count = objeto.nombre;
+                this.valor_cpu_count = objeto.data;
             }),
 
             socket.on('cpu-model', (objeto) => {
-                this.valor_cpu_model = objeto.data.toFixed(2);
-                this.nombre_cpu_model = objeto.nombre;
+                this.valor_cpu_model = objeto.data;
             })
         }
     },

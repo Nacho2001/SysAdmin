@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Virtualización: Correr multiples SO sobre un mismo equipo físico al mismo tiempo
 
 Hypervisor: Otorga recursos a las MV, hay dos tipos de hypervisor:
@@ -162,3 +163,169 @@ Rutas dinámicas: Las crean los mismos routers con sus caractéristicas y la inf
 con otros routers.
 
 Rutas estáticas: Son puestas a mano por un administrador
+=======
+Virtualización: Correr multiples SO sobre un mismo equipo físico al mismo tiempo
+
+Hypervisor: Otorga recursos a las MV, hay dos tipos de hypervisor:
+	Tipo 1: No corren un SO host, sino que corre directamente las vm sin perder recursos en el so host. ej: Proxmox
+	Tipo 2: Corren las mv sobre un so host y divide los recursos entre los SO virtualizados y el host. EJ: Virtualbox
+
+Container: Simplemente virtualiza una aplicación o un servicio directamente aprovechando el kernel,
+sin necesidad de virtualizar un so completo, simplemente los componentes y librerias que necesita para
+funcionar
+
+Imagen de un container: Elementos que necesita para funcionar el servicio virtualizado. Incluye las bibliotecas y 
+dependencias requeridas
+
+Datos adicionales de container: almacenamiento en archivos y en mb, corre en modo usuario, 
+utiliza las mismas interfaces de red que el so host, sin virtualizar ningun adaptador ni red.
+
+Las mv, también virtualizan un kernel de so invitado, el container no.
+
+Microservicios: Son funciones de una misma aplicación/servicio que se ejecuta por separado de las demás,
+permitiendo repararla o reemplazarla si falla (util para encontrar y solucionar errores)
+
+CI/CD: Distribuye las aplicaciones mediante automtización frecuentemente
+
+...........................................
+# docker run -it [imagen] /bin/bash 
+crea un nuevo container en base a una imagen almacenada, lo pone en marcha con una terminal
+gracias a -it, y ejecuta el comando /bin/bash
+Nota: cuando termina el comando, el container también se detiene, pero aún existe
+
+Los containers detenidos y en marcha se pueden ver con # docker ps -a
+
+# docker start/stop UUID / name inicia o deteniene un container llamandolo por el nombre o el id pero 
+sin la consola interactiva
+
+Para conectar con el container iniciado: # docker attach [name]
+
+# docker run -d corre el container en segundo plano
+# docker logs [name] muestra los logs del container
+# docker top [name] ver procesos del container
+# docker exec -d [name] [command] ejecuta en comando en segundo plano en el container
+# docker exec -it [name] [command] ejecuta el comando y tengo un terminal en el container
+# docker rm [name] elimina el container
+
+-----------------------------------------------
+Ventajas de los containers:
+
+/ Inicio y paradas rápidos
+/ Comparten recursos del host (no emulan ni dividen componentes físicos)
+/ Son portables, se pueden transportar de un so a otro sin problemas
+/ Pueden correr muchos al mismo tiempo
+/ Venjas para el usuario al correr aplicaciones complejas sin realizar configuraciones
+
+El container toma los recursos del so, no del hypervisor como las MV ni tampoco emulan un so completo
+
+Si se ejecuta docker run con la misma imagen, se crea un segundo container, no enciende el primero
+
+Ver imagenes: # docker images
+
+--------------------------------------------
+
+DevOps: Es una filosofía, un modo de trabajo que ofrece garantía de calidad mediante la infraestructura como código,
+para no perder tanto tiempo en implementación, mayor automatización y monitoreo. Considerando también el trabajo 
+en equipo para reducir errores.
+
+Orquestación: manipular varios equipos mediante una aplicación EJ: Lanzar un script en la app para que se 
+ejecute en los equipos que controla
+
+Apps de orquestacion: Ansible, Puppet, Chef y Salt
+
+
+Switch -> Distribuye la señal entre sus bocas, opera en capa de enlace (capa 2), trabaja con las direcciones MAC
+Bridge -> Conecta dos segmentos de LAN (manteniendo locales las redes locales), tambien opera en capa 2 
+Cada puerto del switch actua como un bridge
+
+VLAN -> Segmento lógico de una red que actúa como una LAN independiente
+Puerto Trunk -> Transporta las vlans en diferentes switches
+
+VLAN untagged -> No etiqueta su propio tráfico y solo se comunican con una VLAN especifica
+VLAN tagged -> Etiquetan su propio tráfico, se puede comunicar con varias redes, o para restringir 
+el acceso
+
+Para que un dispositivo reconozca que se encuentra en una VLAN se implementas TAGs
+
+En los puertos unttagged los switch realizan el etiquetado, no los dispositivos. En los tagged,
+se espera que los equipos tengan el tráfico etiquetado
+
+Protocolo STP o Spanning tree previence loops si se encuentran más de un switch conectados
+
+Loop: los paquetes viajan en la misma red de forma circular cuando existen varios switch en una red,
+los Loop pueden causar caidas en la red
+
+Port aggregation (Agregacion de enlaces): Agrega capacidad a un canal y la tolerancia a fallos. Utiliza el protocolo LACP
+
+-----------------------------------------------------------
+
+Equipos que pueden segmentar las redes: Bridges, routers y switches
+
+Beneficios de segmentacion de redes:
+/ Limita el acceso a zonas no autorizadas
+/ Protege la red de ataques
+/ Mejora la perfomance de la red cuando separa los servicios
+/ Se pueden crear criterios de seguridad o QoS para los segmentos de la red
+
+Mecanismos fisicos de segmentación: Firewalls, routers, switches, AP
+Mecanismos lógicos: vlans, acls,nacs,vpns
+
+El trafico de vlans debe pasar por un enrutador, se puede utilizar una sola interfaz para varias subredes
+ACL: listas de control de acceso, restringen el tráfico entre las subredes
+
+NACs: pueden restringir el acceso a la red por medio de control de acceso y medidas de seguridad EJ: portales cautivos
+
+VPN: Protege la información que viaja por un canal, mediante encriptación
+
+-----------------------------------------------------
+
+DHCP: Protocolo de configuración dinámica de host, asigna dinámicamente direcciones ip a los dispositivos 
+que soliciten.
+
+Tipos de asignacion:
+Manual: El admin entrega directamente una ip a un equipo
+Autmática: Se asigna una ip estática a un cliente de forma automática (no dinámica)
+Dinámica: Los clientes reciben de forma automática una IP del pool hasta que ya no la necesitan
+
+Negociación DHCP:
+1. DHCPDiscover: Cliente envía una solicitud de IP por broadcast
+2. DPCPOFFER: El server DHCP recibe la petición y le ofrece una IP
+3. DHCPREQUEST: Cliente acepta la IP ofrecida y notifica al servidor
+4. DHCPPACK: EL servidor le envía un mensaje al cliente con la IP y los datos de la red para configuración
+
+---------------------------------------------------------
+
+NAT: Mecanismo de traduccion de ip en otra (traduce una ip privada en publica y viceversa), de acuerdo 
+a una tabla de traducción que se encuentra en el router o un server. Puede traducir una ip privada a una o varias ip publicas
+
+Clases de IP privadas: A, B y C
+
+Tipos de direcciones: 
+Interna: IP local de un equipo dentro de una red
+Externa: IP del equipo destino fuera de la red interna
+Local: Cualquier IP que aparece en la red interna
+Global: Cualquier direccion que aparece en la red externa
+Local interna: IP de origen vista desde el interior de la red
+Global interna: IP de origen viste desde la red externa
+Local externa: IP destino vista desde el interior de la red interna
+Global externa: IP destino vista desde la red externa
+
+Tipos de NAT:
+Nat estático: realiza traducciones uno a uno, las traducciones se introducen manualmente
+Nat dinámico: Se utilizan pools de direcciones locales y globales y son asignadas por orden de llegada
+PAT/Overloading: Las ip locales salen de la red con una sola ip externa.
+
+---------------------------------------------
+Router: Dispositivo que examina los paquetes y elige la mejor ruta para que lleguen a destino. Se encuentra en 
+capa 3 (de red) pero también puede operar en capa 2 (de enlace)
+
+Protocolo: Normas que establecen cómo debe desarrollarse la comunicación entre dos o más equipos
+
+Protocolo de enrutamiento: Establecen la comunicación entre los routers para que intercambien información de sus
+tablas y redes destinos, logrando conexion entre ellos como si fuera una gran red.
+
+Rutas dinámicas: Las crean los mismos routers con sus caractéristicas y la info intercambiada 
+con otros routers.
+
+Rutas estáticas: Son puestas a mano por un administrador
+>>>>>>> 585276d390efaadcb95a19864a4ac5666ed9eaea
