@@ -11,6 +11,7 @@ const mem = os.mem
 const drive = os.drive
 const netstat = os.netstat
 const oss = os.os
+const nodeDiskInfo = require('./dist/index')
 
 //Consigo las funciones de express en "server"
 const server = express()
@@ -82,8 +83,8 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
     })
     
 
-    //Datos de DRIVE
-    setInterval(() => {
+    //Datos de DRIVE (solo en linux)
+    /*setInterval(() => {
         drive.info()
         .then((info) => {
             socket.emit('drive',
@@ -94,7 +95,17 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
                 total: info.totalGb
             })
         })
-    },1000)
+    },1000)*/
+
+    //Datos DRIVE (con Windows)
+    const disk = nodeDiskInfo.getDiskInfoSync() //Consigo los datos desde node-disk
+    socket.emit('node-disk',
+    {
+        utilizado: disk.used,
+        libre: disk.available,
+        uso_porcentaje: disk.capacity,
+        montado: disk.filesystem
+    })
 
     //Datos de MEMORY
     setInterval(() => {
