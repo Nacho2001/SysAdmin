@@ -104,7 +104,7 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
         utilizado: disk.used,
         libre: disk.available,
         uso_porcentaje: disk.capacity,
-        montado: disk.filesystem
+        total: disk.blocks
     })
 
     //Datos de MEMORY
@@ -129,7 +129,7 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
         })
     },1000)
 
-    //NETSTAT
+    //NETSTAT (no funcionó en Windows)
     setInterval(() => {
         netstat.inOut()
         .then((info) => {

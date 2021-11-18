@@ -19,7 +19,7 @@
                         <h5>{{this.drive_utilizado}}</h5>
                     </div>
                     <div class="card-footer text-center bg-dark">
-                        <h4>Valor (%)</h4>
+                        <h4>Bytes</h4>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                         <h5>{{this.drive_libre}}</h5>
                     </div>
                     <div class="card-footer text-center bg-dark">
-                        <h4>Valor (%)</h4>
+                        <h4>Bytes</h4>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                         <h5>{{this.drive_porcentaje}}</h5>
                     </div>
                     <div class="card-footer text-center bg-dark">
-                        <h4>Valor (%)</h4>
+                        <h4>Bytes</h4>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                         <h5>{{this.drive_total}}</h5>
                     </div>
                     <div class="card-footer text-center bg-dark">
-                        <h4>Valor (%)</h4>
+                        <h4>Bytes</h4>
                     </div>
                 </div>
             </div>
@@ -84,10 +84,10 @@ export default {
         capturaDrive(){
             const socket = io(this.equipo)
 
-            socket.on('drive', (objeto) => {
+            socket.on('node-disk', (objeto) => {
                 this.drive_utilizado = objeto.utilizado;
                 this.drive_libre = objeto.libre;
-                this.drive_porcentaje = objeto.l_porcentaje;
+                this.drive_porcentaje = objeto.uso_porcentaje;
                 this.drive_total = objeto.total;
             })
         }
