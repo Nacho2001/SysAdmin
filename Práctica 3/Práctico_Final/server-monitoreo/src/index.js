@@ -97,8 +97,8 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
         })
     },1000)*/
 
-    //Datos DRIVE (con Windows)
-    const disk = nodeDiskInfo.getDiskInfoSync() //Consigo los datos desde node-disk
+    //Datos de almacenamiento con Node disk
+    const disk = nodeDiskInfo.getDiskInfoSync()
     socket.emit('node-disk',
     {
         utilizado: disk.used,
@@ -129,7 +129,7 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
         })
     },1000)
 
-    //NETSTAT (no funcionó en Windows)
+    //NETSTAT (solo en linux)
     setInterval(() => {
         netstat.inOut()
         .then((info) => {

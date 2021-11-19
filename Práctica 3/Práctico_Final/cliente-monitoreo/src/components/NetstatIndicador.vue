@@ -87,13 +87,13 @@ export default {
             const socket = io(this.equipo)
 
             socket.on('netstat-eth0', (objeto) => {
-                this.eth0_input = objeto.input.toFixed(2);
-                this.eth0_output = objeto.output.toFixed(2);
+                this.eth0_input = objeto.input;
+                this.eth0_output = objeto.output;
             }),
 
             socket.on('netstat-lo', (objeto) => {
-                this.lo_input = objeto.input.toFixed(2);
-                this.lo_output = objeto.output.toFixed(2);
+                this.lo_input = objeto.input;
+                this.lo_output = objeto.output;
             })
         }
     },

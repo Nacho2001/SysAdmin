@@ -13,7 +13,7 @@
             <div class="col-5">
                 <div class="card border-success">
                     <div class="card-header text-center bg-success">
-                        <h4>Sistema Operativo:</h4>
+                        <h4>Sistema Operativo utilizado:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
                         <h5>{{this.os_oos}}</h5>
@@ -26,7 +26,7 @@
             <div class="col-5">
                 <div class="card border-success">
                     <div class="card-header text-center bg-success">
-                        <h4>Hostname:</h4>
+                        <h4>Hostname (nombre del equipo):</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
                         <h5>{{this.osh_hostname}}</h5>

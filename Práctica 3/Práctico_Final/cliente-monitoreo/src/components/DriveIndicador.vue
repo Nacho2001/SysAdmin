@@ -1,6 +1,7 @@
 <template>
     <div>
-        <h4>Datos de Drive desde Socket del equipo:</h4>
+        <h4>Datos de Drive desde Socket del equipo</h4>
+        <h5>Informe del disco:</h5>
         <div class="row mt-3">
             <div class="col-3">
                 <select @change="capturaDrive()" v-model="equipo" class="form-select">
@@ -19,7 +20,7 @@
                         <h5>{{this.drive_utilizado}}</h5>
                     </div>
                     <div class="card-footer text-center bg-dark">
-                        <h4>Bytes</h4>
+                        <h4>GB</h4>
                     </div>
                 </div>
             </div>
@@ -32,7 +33,7 @@
                         <h5>{{this.drive_libre}}</h5>
                     </div>
                     <div class="card-footer text-center bg-dark">
-                        <h4>Bytes</h4>
+                        <h4>GB</h4>
                     </div>
                 </div>
             </div>
@@ -47,7 +48,7 @@
                         <h5>{{this.drive_porcentaje}}</h5>
                     </div>
                     <div class="card-footer text-center bg-dark">
-                        <h4>Bytes</h4>
+                        <h4>Valor (%)</h4>
                     </div>
                 </div>
             </div>
@@ -60,7 +61,7 @@
                         <h5>{{this.drive_total}}</h5>
                     </div>
                     <div class="card-footer text-center bg-dark">
-                        <h4>Bytes</h4>
+                        <h4>GB</h4>
                     </div>
                 </div>
             </div>
@@ -84,10 +85,10 @@ export default {
         capturaDrive(){
             const socket = io(this.equipo)
 
-            socket.on('node-disk', (objeto) => {
+            socket.on('drive', (objeto) => {
                 this.drive_utilizado = objeto.utilizado;
                 this.drive_libre = objeto.libre;
-                this.drive_porcentaje = objeto.uso_porcentaje;
+                this.drive_porcentaje = objeto.l_porcentaje;
                 this.drive_total = objeto.total;
             })
         }

@@ -13,26 +13,26 @@
             <div class="col-5">
                 <div class="card border-success">
                     <div class="card-header text-center bg-success">
-                        <h4>Memoria Libre (MB):</h4>
+                        <h4>Memoria RAM Libre:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
                         <h5>{{this.memory_free}}</h5>
                     </div>
                     <div class="card-footer text-center bg-dark">
-                        <h4>Valor (%)</h4>
+                        <h4>MegaBytes (MB)</h4>
                     </div>
                 </div>
             </div>
             <div class="col-5">
                 <div class="card border-success">
                     <div class="card-header text-center bg-success">
-                        <h4>Memoria Total (MB):</h4>
+                        <h4>Memoria RAM Utilizada:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
-                        <h5>{{this.memory_total}}</h5>
+                        <h5>{{this.memory_used}}</h5>
                     </div>
                     <div class="card-footer text-center bg-dark">
-                        <h4>Valor (%)</h4>
+                        <h4>MegaBytes (MB)</h4>
                     </div>
                 </div>
             </div>
@@ -41,13 +41,13 @@
             <div class="col-5">
                 <div class="card border-success">
                     <div class="card-header text-center bg-success">
-                        <h4>Memoria Utilizada:</h4>
+                        <h4>Memoria RAM Total:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
-                        <h5>{{this.memory_usage}}</h5>
+                        <h5>{{this.memory_total}}</h5>
                     </div>
                     <div class="card-footer text-center bg-dark">
-                        <h4>Valor (%)</h4>
+                        <h4>MegaBytes (MB)</h4>
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@ export default {
             equipo:'',
             memory_free:null,
             memory_total:null,
-            memory_usage:null,
+            memory_used:null,
         }
     },
     methods:{
@@ -75,8 +75,8 @@ export default {
                 this.memory_free = objeto.libre.toFixed(2);
             }),
 
-            socket.on('mem-usage', (objeto) => {
-                this.memory_usage = objeto.utilizada.toFixed(2)
+            socket.on('mem-used', (objeto) => {
+                this.memory_used = objeto.utilizada.toFixed(2)
             })
         }
     },

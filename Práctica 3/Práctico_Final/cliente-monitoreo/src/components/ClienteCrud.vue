@@ -3,48 +3,55 @@
     <div class="row"> 
         <div class="col-4">
             <div class="mb-3">
+                <i class="fa fa-group me-1"></i>
                 <label class="form-label">Razón social</label>
                 <input v-model="razon_social" class="form-control" type="text" placeholder="Ingrese razón social">
             </div>
             <div class="mb-3">
+                <i class="fa fa-phone me-1"></i>
                 <label class="form-label">Teléfono de contacto</label>
                 <input v-model="telefono_contacto" class="form-control" type="number" placeholder="Ingrese número de contacto">
             </div>
             <div class="mb-3">
+                <i class="fa fa-envelope me-1"></i>
                 <label class="form-label">Correo electrónico</label>
                 <input v-model="correo_electronico" class="form-control" type="email" placeholder="Ingrese su correo electrónico">
             </div>
         </div>
         <div class="col-4">
             <div class="mb-3">
-                <i class="bi bi-alarm-fill"></i>
+                <i class="fa fa-map-marker me-1"></i>
                 <label class="form-label">Dirección</label>
                 <input v-model="direccion" class="form-control" type="text" placeholder="Ingrese dirección">
             </div>
             <div class="mb-3">
+                <i class="fa fa-map me-1"></i>
                 <label class="form-label">Localidad</label>
                 <input v-model="localidad" class="form-control" type="text" placeholder="Ingrese lugar de residencia">
             </div>
             <div class="mb-3">
+                <i class="fa fa-pencil me-1"></i>
                 <label class="form-label">Descripción del equipo</label>
                 <input v-model="equipo_descripcion" class="form-control" type="text" placeholder="Escriba breve descripción del equipo">
             </div>
         </div>
         <div class="col-4">
             <div class="mb-3">
+                <i class="fa fa-rss me-1"></i>
                 <label class="form-label">Dirección IP</label>
                 <input v-model="direccion_ip" class="form-control" type="text" placeholder="http://direccion_ip:puerto">
             </div>
             <div class="mb-3">
+                <i class="fa fa-desktop me-1"></i>
                 <label class="form-label">Sistema operativo</label>
                 <input v-model="sistema_operativo" class="form-control" type="text" placeholder="Nombre el sistema operativo">
             </div>
 
             <div v-if="state == 0">
-                <button @click="guardar()" class="btn btn-success mt-4">Guardar cliente</button>
+                <button @click="guardar()" class="btn btn-success mt-4"><i class="fa fa-cloud-upload me-1"></i>Guardar cliente</button>
             </div>
             <div v-if="state == 1">
-                <button @click="actualizar()" class="btn btn-warning mt-4">Actualizar cliente</button>
+                <button @click="actualizar()" class="btn btn-warning mt-4"><i class="fa fa-undo me-1"></i>Actualizar cliente</button>
             </div>
         </div>
     </div>
@@ -52,6 +59,7 @@
         <div class="col-12">
             <table class="table mt-3">
                 <thead>
+                    <i class="fa fa-table me-1"></i>
                     <tr>
                         <th class="text-center">Razón social</th>
                         <th class="text-center">Teléfono</th>
@@ -76,7 +84,7 @@
                         <td class="text-center">{{cliente.sistema_operativo}}</td>
                         <td>
                             <button @click="editar(cliente)" class="btn btn-outline-primary btn-sm">Editar</button>
-                            <button @click="eliminar(cliente.id_cliente)" class="btn btn-danger fw-bold btn-sm ms-2">x</button>
+                            <button @click="eliminar(cliente.id_cliente)" class="btn btn-danger fw-bold btn-sm ms-2"><i class="fa fa-times"></i></button>
                         </td>
                     </tr>
                 </tbody>

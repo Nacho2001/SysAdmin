@@ -41,13 +41,13 @@
             <div class="col-5">
                 <div class="card border-success">
                     <div class="card-header text-center bg-success">
-                        <h4>CPU Count:</h4>
+                        <h4>Nro de cores:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
                         <h5>{{this.valor_cpu_count}}</h5>
                     </div>
                     <div class="card-footer text-center bg-dark">
-                        <h4>Valor (%)</h4>
+                        <h4>CPU Count</h4>
                     </div>
                 </div>
             </div>
@@ -58,9 +58,6 @@
                     </div>
                     <div class="card-body text-center bg-dark">
                         <h5>{{this.valor_cpu_model}}</h5>
-                    </div>
-                    <div class="card-footer text-center bg-dark">
-                        <h4>Valor (%)</h4>
                     </div>
                 </div>
             </div>
