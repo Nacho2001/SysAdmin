@@ -42,13 +42,13 @@
             <div class="col-5">
                 <div class="card border-success">
                     <div class="card-header text-center bg-success">
-                        <h4>Porcentaje:</h4>
+                        <h4>Capacidad:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
                         <h5>{{this.drive_porcentaje}}</h5>
                     </div>
                     <div class="card-footer text-center bg-dark">
-                        <h4>Valor (%)</h4>
+                        <h4>Utilizado (%)</h4>
                     </div>
                 </div>
             </div>
@@ -86,10 +86,10 @@ export default {
             const socket = io(this.equipo)
 
             socket.on('drive', (objeto) => {
-                this.drive_utilizado = objeto.utilizado;
-                this.drive_libre = objeto.libre;
-                this.drive_porcentaje = objeto.l_porcentaje;
-                this.drive_total = objeto.total;
+                this.drive_utilizado = objeto.utilizado.toFixed(2);
+                this.drive_libre = objeto.libre.toFixed(2);
+                this.drive_porcentaje = objeto.porcentaje;
+                this.drive_total = objeto.total.toFixed(2);
             })
         }
     },

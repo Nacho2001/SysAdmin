@@ -11,13 +11,13 @@
             <router-link class="nav-link" to="/cliente"><i class="fa fa-user-circle-o me-1"></i>Cliente Vue</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/cpu"><i class="fa fa-microchip me-1"></i>Datos CPU</router-link>
+            <router-link class="nav-link" to="/cpu"><i class="fa fa-tachometer me-1"></i>Datos CPU</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/drive"><i class="fa fa-hdd-o me-1"></i>Datos DRIVE</router-link>
+            <router-link class="nav-link" to="/drive"><i class="fa fa-server me-1"></i>Datos DRIVE</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/memory"><i class="fa fa-server me-1">Memoria</router-link>
+            <router-link class="nav-link" to="/memory"><i class="fa fa-microchip me-1"></i>Memoria</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/netstat"><i class="fa fa-wifi me-1"></i>Netstat</router-link>

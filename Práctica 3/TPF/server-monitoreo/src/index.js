@@ -8,10 +8,10 @@ const socketio = require('socket.io')
 const os = require('node-os-utils')
 const cpu = os.cpu
 const mem = os.mem
-const drive = os.drive
+//const drive = os.drive
 const netstat = os.netstat
 const oss = os.os
-const nodeDiskInfo = require('./dist/index')
+const nodeDiskInfo = require('node-disk-info');
 
 //Consigo las funciones de express en "server"
 const server = express()
@@ -83,7 +83,7 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
     })
     
 
-    //Datos de DRIVE (solo en linux)
+    //Datos de DRIVE (funciona en linux)
     /*setInterval(() => {
         drive.info()
         .then((info) => {
@@ -97,14 +97,14 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
         })
     },1000)*/
 
-    //Datos de almacenamiento con Node disk
+    //Datos de DRIVE (Node-disk-info)
     const disk = nodeDiskInfo.getDiskInfoSync()
-    socket.emit('node-disk',
+    socket.emit('drive',
     {
-        utilizado: disk.used,
-        libre: disk.available,
-        uso_porcentaje: disk.capacity,
-        total: disk.blocks
+        utilizado: (disk[0].used) / 1073741824, //Apunto al elemento 0 del array, que es el disco local del dispositivo
+        libre: (disk[0].available) / 1073741824,
+        porcentaje: disk[0].capacity,
+        total: (disk[0].blocks) / 1073741824
     })
 
     //Datos de MEMORY
@@ -122,21 +122,21 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
     setInterval(() => {
         mem.used()
         .then((info) => {
-            socket.emit('mem-usage',
+            socket.emit('mem-used',
             {
-                utilizada: info.usageMemMb
+                utilizada: info.usedMemMb
             })
         })
     },1000)
 
-    //NETSTAT (solo en linux)
+    //NETSTAT
     setInterval(() => {
         netstat.inOut()
         .then((info) => {
-            socket.emit('netstat-eth0',
+            socket.emit('netstat-eth0', //Apunto al elemento 1, correspondiente a la interfaz eth0
             {
-                input: info.eth0.inputMb,
-                output: info.eth0.outputMb
+                input: info[1].inputMb,
+                output: info[1].outputMb
             })
         })
     },1000)
@@ -144,22 +144,30 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
     setInterval(() => {
         netstat.stats()
         .then((info) => {
-            socket.emit('netstat-lo',
+            socket.emit('netstat-lo', //Apunto al elemento 0, correspondiente a la interfaz lo
             {
-                input: info.lo.inputMb,
-                output: info.lo.outputMb
+                input: info[0].inputBytes,
+                output: info[0].outputBytes
             })
         })
     },1000)
 
     //Datos de OS
     const oos = oss.oos()
-   
+    
     socket.emit('os-oos',
     {
         data: oos,
         name:'OS OOS'
     })
+    /*oss.oos()
+    .then((sistem) => {
+        socket.emit('os-oos',
+        {
+            data: sistem.oss,
+            name:'OS OOS'
+        })
+    })*/
 
     const hostname = oss.hostname()
     socket.emit('os-hostname',
