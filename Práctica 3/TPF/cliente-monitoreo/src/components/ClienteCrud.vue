@@ -59,8 +59,8 @@
         <div class="col-12">
             <table class="table mt-3">
                 <thead>
-                    <i class="fa fa-table me-1"></i>
                     <tr>
+                        <th><i class="fa fa-table me-1"></i></th>
                         <th class="text-center">Razón social</th>
                         <th class="text-center">Teléfono</th>
                         <th class="text-center">Correo electrónico</th>
@@ -74,6 +74,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="cliente of listado" v-bind:key="cliente.id_cliente">
+                        <td></td>
                         <td class="text-center">{{cliente.razon_social}}</td>
                         <td class="text-center">{{cliente.telefono_contacto}}</td>
                         <td class="text-center">{{cliente.correo_electronico}}</td>

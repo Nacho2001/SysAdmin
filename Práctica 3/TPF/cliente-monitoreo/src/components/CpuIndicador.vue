@@ -101,6 +101,9 @@ export default {
             socket.on('cpu-model', (objeto) => {
                 this.valor_cpu_model = objeto.data;
             })
+
+            this.aplicar_tema()
+            this.iniciar_grafico()
         },
         iniciar_grafico(){
             const socket = io(this.equipo)
@@ -126,7 +129,7 @@ export default {
                     useUTC: false
                 },
                 title: {
-                    text: 'Live random data'
+                    text: 'CPU'
                 },
                 xAxis: {
                     type: 'datetime',
@@ -153,7 +156,7 @@ export default {
                     enabled: false
                 },
                 series: [{
-                    name: 'Random data',
+                    name: 'CPU utilizado (%)',
                     data: (function () {
                        
                         var data = [],
@@ -177,14 +180,14 @@ export default {
         },
         aplicar_tema(){
             Highcharts.theme = {
-                colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
+                colors: ['#5CB85C', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
                     '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
                 chart: {
                     backgroundColor: {
                         linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
                         stops: [
-                            [0, '#2a2a2b'],
-                            [1, '#3e3e40']
+                            [0, '#0F2537'],
+                            [1, '#0F2537']
                         ]
                     },
                     style: {

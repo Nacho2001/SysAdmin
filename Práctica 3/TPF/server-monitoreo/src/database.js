@@ -3,7 +3,7 @@ const mysql = require('mysql')
 
 //Ingreso a la BD
 const db = mysql.createConnection({
-    host:'192.168.56.102',
+    host:'192.168.56.2', //La ip es del server docker donde se encuentra la BD
     port:3306,
     //server:'db',
     user:'root',
