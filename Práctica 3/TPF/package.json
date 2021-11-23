@@ -1,5 +1,5 @@
 {
-  "name": "TPF",
+  "name": "TPF", //Esta carpeta corresponde al Trabajo Práctico Final
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
