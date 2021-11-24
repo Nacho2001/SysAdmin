@@ -25,8 +25,8 @@
                 </div>
             </div>
             <div class="col-5">
-                <div class="card border-success">
-                    <div class="card-header text-center bg-success">
+                <div class="card border-danger">
+                    <div class="card-header text-center bg-danger">
                         <h4>Valor de salida:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
@@ -54,8 +54,8 @@
                 </div>
             </div>
             <div class="col-5">
-                <div class="card border-success">
-                    <div class="card-header text-center bg-success">
+                <div class="card border-danger">
+                    <div class="card-header text-center bg-danger">
                         <h4>Valor de salida:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">

@@ -12,8 +12,8 @@
         </div>
         <div class="row mt-4">
             <div class="col-5">
-                <div class="card border-success">
-                    <div class="card-header text-center bg-success">
+                <div class="card border-danger">
+                    <div class="card-header text-center bg-danger">
                         <h4>Utilizado:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
@@ -40,8 +40,8 @@
         </div>
         <div class="row mt-5">
             <div class="col-5">
-                <div class="card border-success">
-                    <div class="card-header text-center bg-success">
+                <div class="card border-danger">
+                    <div class="card-header text-center bg-danger">
                         <h4>Capacidad:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
@@ -53,8 +53,8 @@
                 </div>
             </div>
             <div class="col-5">
-                <div class="card border-success">
-                    <div class="card-header text-center bg-success">
+                <div class="card border-primary">
+                    <div class="card-header text-center bg-primary">
                         <h4>Total:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
