@@ -5,7 +5,7 @@
             <div class="col-3">
                 <select @change="capturaMem()" v-model="equipo" class="form-select">
                     <option value="-1">Seleccione equipo...</option>
-                    <option value="http://localhost:5020">Mi equipo</option>
+                    <option v-for="cliente of listado" v-bind:key="cliente.id_cliente">{{cliente.direccion_ip}}</option>
                 </select>
             </div>
         </div>
@@ -70,6 +70,7 @@ export default {
             memory_free:null,
             memory_total:null,
             memory_used:null,
+            listado:[]
         }
     },
     methods:{
@@ -89,6 +90,11 @@ export default {
             this.iniciar_grafico()
             this.aplicar_tema2()
             this.iniciar_grafico2()
+        },
+        listar_clientes(){
+            this.axios.get("http://192.168.200.18:5000/clientes").then(result => {
+                this.listado = result.data;
+            })
         },
         iniciar_grafico(){
             const socket = io(this.equipo)
@@ -633,6 +639,7 @@ export default {
     },
     mounted(){
         this.capturaMem()
+        this.listar_clientes()
     }
 }
 </script>

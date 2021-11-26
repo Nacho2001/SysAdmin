@@ -8,7 +8,7 @@
       <router-link class="nav-link" to="/drive"><i class="fa fa-server me-1"></i>Datos DRIVE</router-link>
       <router-link class="nav-link" to="/memory"><i class="fa fa-microchip me-1"></i>Memoria</router-link>
       <router-link class="nav-link" to="/netstat"><i class="fa fa-wifi me-1"></i>Netstat</router-link>
-      <router-link class="nav-link" to="/netstat"><i class="fa fa-wifi me-1"></i>Netstat</router-link>
+      <router-link class="nav-link" to="/os"><i class="fa fa-android me-1"></i>Datos OS</router-link>
     </div>
   </div>
 </template>

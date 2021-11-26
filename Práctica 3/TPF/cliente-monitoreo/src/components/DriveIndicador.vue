@@ -6,7 +6,7 @@
             <div class="col-3">
                 <select @change="capturaDrive()" v-model="equipo" class="form-select">
                     <option value="-1">Seleccione equipo...</option>
-                    <option value="http://localhost:5020">Mi equipo</option>
+                    <option v-for="cliente of listado" v-bind:key="cliente.id_cliente">{{cliente.direccion_ip}}</option>
                 </select>
             </div>
         </div>
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-5 mb-5">
             <div class="col-5">
                 <div class="card border-danger">
                     <div class="card-header text-center bg-danger">
@@ -78,23 +78,29 @@ export default {
             drive_utilizado:null,
             drive_libre:null,
             drive_porcentaje:null,
-            drive_total:null
+            drive_total:null,
+            listado:[]
         }
     },
     methods:{
         capturaDrive(){
             const socket = io(this.equipo)
-
             socket.on('drive', (objeto) => {
                 this.drive_utilizado = objeto.utilizado.toFixed(2);
                 this.drive_libre = objeto.libre.toFixed(2);
                 this.drive_porcentaje = objeto.porcentaje;
                 this.drive_total = objeto.total.toFixed(2);
             })
+        },
+        listar_clientes(){
+            this.axios.get("http://192.168.200.18:5000/clientes").then(result => {
+                this.listado = result.data;
+            })
         }
     },
     mounted(){
         this.capturaDrive()
+        this.listar_clientes()
     }
 }
 </script>

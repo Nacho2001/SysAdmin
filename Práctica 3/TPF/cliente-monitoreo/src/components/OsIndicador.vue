@@ -5,7 +5,7 @@
             <div class="col-3">
                 <select @change="capturaOS()" v-model="equipo" class="form-select">
                     <option value="-1">Seleccione equipo...</option>
-                    <option value="http://localhost:5020">Mi equipo</option>
+                    <option v-for="cliente of listado" v-bind:key="cliente.id_cliente">{{cliente.direccion_ip}}</option>
                 </select>
             </div>
         </div>
@@ -66,7 +66,8 @@ export default {
             osh_name:'',
             osh_hostname:'',
             osa_name:'',
-            osa_arch:''
+            osa_arch:'',
+            listado:[]
         }
     },
     methods:{
@@ -88,10 +89,16 @@ export default {
                 this.osa_arch = objeto.data;
             })
 
+        },
+        listar_clientes(){
+            this.axios.get("http://192.168.200.18:5000/clientes").then(result => {
+                this.listado = result.data;
+            })
         }
     },
     mounted(){
         this.capturaOS()
+        this.listar_clientes()
     }
 }
 </script>

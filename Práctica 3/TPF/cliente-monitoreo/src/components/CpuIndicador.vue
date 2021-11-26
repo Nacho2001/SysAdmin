@@ -5,7 +5,7 @@
             <div class="col-3">
                 <select @change="capturaCpu()" v-model="equipo" class="form-select">
                     <option value="-1">Seleccione equipo...</option>
-                    <option value="http://localhost:5020">Mi equipo</option>
+                    <option v-for="cliente of listado" v-bind:key="cliente.id_cliente">{{cliente.direccion_ip}}</option>
                 </select>
             </div>
         </div>
@@ -71,7 +71,6 @@ import io from 'socket.io-client';
 import Highcharts from 'highcharts';
 import Exporting from 'highcharts/modules/exporting';
 Exporting(Highcharts);
-
 export default {
     name: 'CpuIndicador',
     data(){
@@ -81,32 +80,35 @@ export default {
             valor_cpu_free:null,
             valor_cpu_count:null,
             valor_cpu_model:null,
+            listado:[],
+            direccion_ip:""
         }
     },
     methods:{
         capturaCpu(){
             const socket = io(this.equipo)
-
             socket.on('cpu-usage', (objeto) => {
                 this.valor_cpu_usage = objeto.data.toFixed(2);
             }),
-
             socket.on('cpu-free', (objeto) => {
                 this.valor_cpu_free = objeto.data.toFixed(2);
             }),
-
             socket.on('cpu-count', (objeto) => {
                 this.valor_cpu_count = objeto.data;
             }),
-
             socket.on('cpu-model', (objeto) => {
                 this.valor_cpu_model = objeto.data;
             })
-
             this.aplicar_tema()
             this.iniciar_grafico()
             this.aplicar_tema2()
             this.iniciar_grafico2()
+        },
+        listar_clientes(){
+            this.axios.get("http://192.168.200.18:5000/clientes").then(result => {
+                this.listado = result.data;
+                this.direccion_ip = result.direccion_ip;
+            })
         },
         iniciar_grafico(){
             const socket = io(this.equipo)
@@ -648,10 +650,10 @@ export default {
             // Apply the theme
             Highcharts.setOptions(Highcharts.theme);
         }
-
     },
     mounted(){
         this.capturaCpu()
+        this.listar_clientes()
     }
 }
 </script>

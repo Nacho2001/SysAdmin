@@ -5,7 +5,7 @@
             <div class="col-3">
                 <select @change="capturaNet()" v-model="equipo" class="form-select">
                     <option value="-1">Seleccione equipo...</option>
-                    <option value="http://localhost:5020">Mi equipo</option>
+                    <option v-for="cliente of listado" v-bind:key="cliente.id_cliente">{{cliente.direccion_ip}}</option>
                 </select>
             </div>
         </div>
@@ -79,7 +79,8 @@ export default {
             eth0_input:null,
             eth0_output:null,
             lo_input:null,
-            lo_output:null
+            lo_output:null,
+            listado:[]
         }
     },
     methods:{
@@ -95,10 +96,16 @@ export default {
                 this.lo_input = objeto.input;
                 this.lo_output = objeto.output;
             })
+        },
+        listar_clientes(){
+            this.axios.get("http://192.168.200.18:5000/clientes").then(result => {
+                this.listado = result.data;
+            })
         }
     },
     mounted(){
         this.capturaNet()
+        this.listar_clientes()
     }
 }
 </script>

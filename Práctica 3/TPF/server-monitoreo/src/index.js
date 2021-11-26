@@ -97,7 +97,7 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
         })
     },1000)*/
 
-    //Datos de DRIVE (Node-disk-info)
+    //Datos de DRIVE (Node-disk-info) Muestra los datos del disco en Windows
     const disk = nodeDiskInfo.getDiskInfoSync()
     socket.emit('drive',
     {
@@ -153,21 +153,13 @@ io.on('connection', (socket) => { // Datos del CPU, los que no tienen setInterva
     },1000)
 
     //Datos de OS
-    const oos = oss.oos()
+    const oos = oss.type()
     
     socket.emit('os-oos',
     {
         data: oos,
         name:'OS OOS'
     })
-    /*oss.oos()
-    .then((sistem) => {
-        socket.emit('os-oos',
-        {
-            data: sistem.oss,
-            name:'OS OOS'
-        })
-    })*/
 
     const hostname = oss.hostname()
     socket.emit('os-hostname',
