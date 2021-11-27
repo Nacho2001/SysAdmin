@@ -23,7 +23,7 @@
             <router-link class="nav-link" to="/netstat"><i class="fa fa-wifi me-1"></i>Netstat</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/os"><i class="fa fa-android me-1"></i>Datos OS</router-link>
+            <router-link class="nav-link" to="/os"><i class="fa fa-desktop me-1"></i>Datos OS</router-link>
           </li>
         </ul>
       </div>

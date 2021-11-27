@@ -14,7 +14,7 @@
             <div class="col-5">
                 <div class="card border-success">
                     <div class="card-header text-center bg-success">
-                        <h4>Valor de entrada:</h4>
+                        <h4><i class="fa fa-arrow-down me-1"></i>Valor de entrada:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
                         <h5>{{this.eth0_input}}</h5>
@@ -27,7 +27,7 @@
             <div class="col-5">
                 <div class="card border-danger">
                     <div class="card-header text-center bg-danger">
-                        <h4>Valor de salida:</h4>
+                        <h4><i class="fa fa-arrow-up me-1"></i>Valor de salida:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
                         <h5>{{this.eth0_output}}</h5>
@@ -43,7 +43,7 @@
             <div class="col-5">
                 <div class="card border-success">
                     <div class="card-header text-center bg-success">
-                        <h4>Valor de entrada:</h4>
+                        <h4><i class="fa fa-arrow-down me-1"></i>Valor de entrada:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
                         <h5>{{this.lo_input}}</h5>
@@ -56,7 +56,7 @@
             <div class="col-5">
                 <div class="card border-danger">
                     <div class="card-header text-center bg-danger">
-                        <h4>Valor de salida:</h4>
+                        <h4><i class="fa fa-arrow-up me-1"></i>Valor de salida:</h4>
                     </div>
                     <div class="card-body text-center bg-dark">
                         <h5>{{this.lo_output}}</h5>

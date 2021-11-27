@@ -51,8 +51,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-5">
+            <div class="col-7">
                 <i class="fa fa-android" style="font-size:140px;color:green"></i>
+                <i class="fa fa-linux me-3" style="font-size:140px;color:black"></i>
+                <i class="fa fa-windows me-3" style="font-size:140px;color:blue"></i>
+                <i class="fa fa-apple me-3" style="font-size:140px;color:white"></i>
             </div>
         </div>
     </div>
