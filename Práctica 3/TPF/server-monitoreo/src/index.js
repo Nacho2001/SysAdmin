@@ -37,7 +37,6 @@ server.use(enrutador)
 //muestra el mensaje de inicio del servidor por consola
 console.log(`Servidor puesto en marcha en el puerto ${server.get('port')}`)
 
-
 //El socket utilizará un puerto diferente al de la api: 5020
 server.set('port2', process.env.PORT || 5020)
 

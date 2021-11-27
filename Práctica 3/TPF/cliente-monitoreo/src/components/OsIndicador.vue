@@ -1,5 +1,5 @@
 <template>
-        <div>
+    <div>
         <h4>Datos del SO desde Socket del equipo:</h4>
         <div class="row mt-3">
             <div class="col-3">
@@ -50,6 +50,9 @@
                         <h4>{{this.osa_name}}</h4>
                     </div>
                 </div>
+            </div>
+            <div class="col-5">
+                <i class="fa fa-android" style="font-size:140px;color:green"></i>
             </div>
         </div>
     </div>

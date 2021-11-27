@@ -66,6 +66,18 @@
                 </div>
             </div>
         </div>
+        <div>
+            <h5>Espacio disponible: {{((this.drive_libre*100)/this.drive_total).toFixed(1)+"%"}}</h5>
+            <div class="progress mb-5">
+                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" v-bind:style="'width: '+((this.drive_libre*100)/this.drive_total)+'%'" v-bind:aria-valuenow="this.drive_libre" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+        <div>
+            <h5>Disco utilizado al {{this.drive_porcentaje}}</h5>
+            <div class="progress mb-5">
+                <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" v-bind:style="'width: '+this.drive_porcentaje" v-bind:aria-valuenow="this.drive_porcentaje" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
