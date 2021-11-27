@@ -5,7 +5,7 @@
             <div class="col-3">
                 <select @change="capturaNet()" v-model="equipo" class="form-select">
                     <option value="-1">Seleccione equipo...</option>
-                    <option v-for="cliente of listado" v-bind:key="cliente.id_cliente">{{cliente.direccion_ip}}</option>
+                    <option v-for="cliente of listado" v-bind:key="cliente.direccion_ip" v-bind:value="cliente.direccion_ip">{{cliente.razon_social}}</option>
                 </select>
             </div>
         </div>

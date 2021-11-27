@@ -6,8 +6,13 @@
             <div class="col-3">
                 <select @change="capturaDrive()" v-model="equipo" class="form-select">
                     <option value="-1">Seleccione equipo...</option>
-                    <option v-for="cliente of listado" v-bind:key="cliente.id_cliente">{{cliente.direccion_ip}}</option>
+                    <option v-for="cliente of listado" v-bind:key="cliente.direccion_ip" v-bind:value="cliente.direccion_ip">{{cliente.razon_social}}</option>
                 </select>
+            </div>
+        </div>
+        <div>
+            <div class="progress mt-4 mb-3">
+                <div class="progress-bar progress-bar-striped" role="progressbar" v-bind:style="styleArray" v-bind:aria-valuenow="this.drive_porcentaje" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
         <div class="row mt-4">
@@ -69,6 +74,7 @@
     </div>
 </template>
 <script>
+const styleArray=("width: "+ this.drive_porcentaje+ "%")
 import io from 'socket.io-client'
 export default {
     name: 'DriveIndicador',

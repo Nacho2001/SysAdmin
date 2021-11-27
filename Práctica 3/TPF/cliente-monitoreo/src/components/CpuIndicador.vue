@@ -5,7 +5,7 @@
             <div class="col-3">
                 <select @change="capturaCpu()" v-model="equipo" class="form-select">
                     <option value="-1">Seleccione equipo...</option>
-                    <option v-for="cliente of listado" v-bind:key="cliente.id_cliente">{{cliente.direccion_ip}}</option>
+                    <option v-for="cliente of listado" v-bind:key="cliente.direccion_ip" v-bind:value="cliente.direccion_ip">{{cliente.razon_social}}</option>
                 </select>
             </div>
         </div>
@@ -80,8 +80,7 @@ export default {
             valor_cpu_free:null,
             valor_cpu_count:null,
             valor_cpu_model:null,
-            listado:[],
-            direccion_ip:""
+            listado:[]
         }
     },
     methods:{
@@ -107,7 +106,6 @@ export default {
         listar_clientes(){
             this.axios.get("http://192.168.200.18:5000/clientes").then(result => {
                 this.listado = result.data;
-                this.direccion_ip = result.direccion_ip;
             })
         },
         iniciar_grafico(){
