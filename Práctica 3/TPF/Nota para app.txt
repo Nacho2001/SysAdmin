@@ -1,0 +1,1 @@
+La ip del server en la app es 192.168.43.211
