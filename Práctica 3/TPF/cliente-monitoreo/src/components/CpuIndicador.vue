@@ -104,7 +104,7 @@ export default {
             this.iniciar_grafico2()
         },
         listar_clientes(){
-            this.axios.get("http://192.168.200.18:5000/clientes").then(result => {
+            this.axios.get("http://localhost:5000/clientes").then(result => {
                 this.listado = result.data;
             })
         },

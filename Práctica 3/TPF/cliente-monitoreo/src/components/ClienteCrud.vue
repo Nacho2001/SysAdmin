@@ -135,7 +135,7 @@ export default {
                 sistema_operativo:this.sistema_operativo
             }
 
-            this.axios.post("http://192.168.200.18:5000/cliente", elemento).then(result => {
+            this.axios.post("http://localhost:5000/cliente", elemento).then(result => {
                 alert(result.data)
                 this.limpiar()
                 this.listar()
@@ -143,13 +143,13 @@ export default {
         },
 
         listar(){
-            this.axios.get("http://192.168.200.18:5000/clientes").then(result => {
+            this.axios.get("http://localhost:5000/clientes").then(result => {
                 this.listado = result.data;
             })
         },
 
         eliminar(id){
-            this.axios.delete("http://192.168.200.18:5000/cliente/"+ id).then(result => {
+            this.axios.delete("http://localhost:5000/cliente/"+ id).then(result => {
                 alert(result.data)
                 this.listar()
             })
@@ -179,7 +179,7 @@ export default {
                 direccion_ip:this.direccion_ip,
                 sistema_operativo:this.sistema_operativo
             }
-            this.axios.put("http://192.168.200.18:5000/cliente/"+ this.id,ClienteCambiado).then(result => {
+            this.axios.put("http://localhost:5000/cliente/"+ this.id,ClienteCambiado).then(result => {
                 alert(result.data)
                 this.listar()
                 this.limpiar()
