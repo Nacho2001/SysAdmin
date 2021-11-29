@@ -1,1 +1,2 @@
 La ip del server en la app es 192.168.43.211
+Recordar cambiar la ip del server y de la base de datos si voy a utilizar una diferente
