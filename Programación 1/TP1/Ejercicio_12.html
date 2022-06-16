@@ -8,18 +8,21 @@
 </head>
 <body>
     <script>
+        let precio_final = 0 //Valor inicial de precio_final
         let precio = parseFloat(prompt("Ingrese el precio"))
         let condicion = prompt("Desea pagar con efectivo o débito (si/no)")
-        if (condicion="si"){
-            let precio_descuento = parseFloat(precio-precio*0.20)
-            let precio_final = precio_descuento+precio_descuento*0.21
-        }
-        if (condicion="no"){
-            let precio_final = precio+precio*0.21
+        if (condicion=="si"){
+            let precio_descuento = precio-precio*0.20
+            precio_final = precio_descuento+precio_descuento*0.21
+            document.write("El precio final es de $"+precio_final)
         }else{
-            document.write("Valor fuera de rango")
+            if (condicion=="no"){
+                precio_final = precio+precio*0.21
+                document.write("El precio final es de $"+precio_final)
+            }else{
+                alert("Valor fuera de rango")
+            }
         }
-        document.write("El precio final es de $"+precio_final)
     </script>
 </body>
 </html>
