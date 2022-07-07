@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trabajo Práctico evaluativo 1</title>
 </head>
-<body>
+<body style="background-color:rgb(190, 240, 205)">
     <div class="row" style="margin-left: 90px;">
         <h3>Nombre del cliente</h3>
         <input type="text" id="name">
-        <h3>Tarjeta de crédito?</h3>
-        <button id="rta_si">Si</button>
-        <button id="rta_no">No</button>
+        <button onclick="nombre()">Guardar</button>
         <h2>Productos:</h2>
         <div style="margin-left: 15px;">
             <h3>Producto</h3>
@@ -22,10 +20,17 @@
             <h3>Cantidad</h3>
             <input type="number" id="cantidad"><br>
             <button onclick="carga_producto()" style="margin-top: 10px;">Cargar producto</button>
+            <button onclick="fin_compra()" style="margin-top: 10px; margin-left: 5px;">Finalizar compra</button>
         </div>
-        <h4>Resumen:</h4>
-        <p><span id="resumen"></span> </p>
+        <div class="card" style="background-color:rgb(226, 245, 245); width: 250px;">
+            <h4>Resumen:</h4>
+            <p>Cliente: <span id="nombre"></span> </p>
+            <p><span id="resumen_compras"></span> </p>
+            <p>Subtotal: $<span id="subtotal">0</span></p>
+            <p><span id="total"></span></p>
+        </div>
     </div>
-    <script src="./TP Evaluativo.js"></script>
+    <script src="./TP Evaluativo.js">
+    </script>
 </body>
 </html>
